@@ -18,10 +18,12 @@ static void init_malloc_global_mutex(void)
 	mtx_init(&malloc_global_mutex, mtx_plain);
 }
 
-#define MMAP(s)   _PDCLIB_allocpages((s)/_PDCLIB_MALLOC_PAGESIZE)
-#define DIRECT_MMAP(s) MMAP(s)
-#define MUNMAP(a, s) ((_PDCLIB_freepages((a), (s)/_PDCLIB_MALLOC_PAGESIZE)), 0)
-#define MREMAP(a, osz, nsz, mv) _PDCLIB_reallocpages((a), (osz)/_PDCLIB_MALLOC_PAGESIZE, (nsz)/_PDCLIB_MALLOC_PAGESIZE, (mv))
+#ifndef _PDCLIB_NO_MMAP
+	#define MMAP(s)   _PDCLIB_allocpages((s)/_PDCLIB_MALLOC_PAGESIZE)
+	#define DIRECT_MMAP(s) MMAP(s)
+	#define MUNMAP(a, s) ((_PDCLIB_freepages((a), (s)/_PDCLIB_MALLOC_PAGESIZE)), 0)
+	#define MREMAP(a, osz, nsz, mv) _PDCLIB_reallocpages((a), (osz)/_PDCLIB_MALLOC_PAGESIZE, (nsz)/_PDCLIB_MALLOC_PAGESIZE, (mv))
+#endif
 
 #undef WIN32
 #undef _WIN32
@@ -39,22 +41,39 @@ static void init_malloc_global_mutex(void)
 #define DEBUG 0
 #define ABORT_ON_ASSERT_FAILURE 0
 #define MALLOC_FAILURE_ACTION errno = ENOMEM
-#define HAVE_MORECORE 0
-#define MORECORE __unnamed__
-#define MORECORE_CONTIGUOUS 0
-#define MORECORE_CANNOT_TRIM 0
-#define NO_SEGMENT_TRAVERSAL 0
-#define HAVE_MMAP 1
-#if defined(_PDCLIB_HAVE_REALLOCPAGES)
-	#define HAVE_MREMAP 1
+
+#ifdef _PDCLIB_HAVE_MORECORE
+	#define HAVE_MORECORE 1
+	#define MORECORE _PDCLIB_MORECORE
+	#define MORECORE_CONTIGUOUS _PDCLIB_MORECORE_CONTIGUOUS
+	#define MORECORE_CANNOT_TRIM _PDCLIB_MORECORE_CANNOT_TRIM
 #else
-	#define HAVE_MREMAP 0
+	#define HAVE_MORECORE 0
+	#define MORECORE __unnamed__
+	#define MORECORE_CONTIGUOUS 0
+	#define MORECORE_CANNOT_TRIM 0
 #endif
-#if defined(_PDCLIB_ALLOCPAGES_CLEARS)
-	#define MMAP_CLEARS 1
+
+#define NO_SEGMENT_TRAVERSAL 0
+
+#ifndef _PDCLIB_NO_MMAP
+	#define HAVE_MMAP 1
+	#if defined(_PDCLIB_HAVE_REALLOCPAGES)
+		#define HAVE_MREMAP 1
+	#else
+		#define HAVE_MREMAP 0
+	#endif
+	#if defined(_PDCLIB_ALLOCPAGES_CLEARS)
+		#define MMAP_CLEARS 1
+	#else
+		#define MMAP_CLEARS 0
+	#endif
 #else
+	#define HAVE_MMAP 0
+	#define HAVE_MREMAP 0
 	#define MMAP_CLEARS 0
 #endif
+
 #define USE_BUILTIN_FFS 0
 #define malloc_getpagesize _PDCLIB_MALLOC_PAGESIZE
 #define USE_DEV_RANDOM 0

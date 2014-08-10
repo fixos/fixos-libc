@@ -37,9 +37,10 @@ if $(PDCLIB_TOOLCHAIN) = "gcc" {
     #                        warnings that call is unlikely/code size would grow
     # No -Wredundant-decls : some functions must be multiply defined
     PDCLIB_WARNINGS ?= 
-      -Wall -Wextra -pedantic -Wno-unused-parameter -Wshadow 
+      -Wall -Wextra -Wno-unused-parameter -Wshadow 
       -Wpointer-arith -Wwrite-strings -Wmissing-declarations -Wno-long-long 
-      -Wuninitialized 
+      -Wuninitialized
+      -pedantic
       ;
     PDCLIB_CCWARNINGS ?= 
       -Wnested-externs -Wstrict-prototypes -Wmissing-prototypes ;
@@ -60,6 +61,7 @@ if $(PDCLIB_TOOLCHAIN) = "gcc" {
       -ffunction-sections
       -fdata-sections
       -D_PDCLIB_BUILD
+      -Os
       $(PDCLIB_WARNINGS) ;
 
     if $(OS) = "MACOSX" {
