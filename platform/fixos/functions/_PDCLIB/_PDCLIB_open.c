@@ -19,9 +19,10 @@
 
 extern const _PDCLIB_fileops_t _PDCLIB_fileops;
 
-int sys_open(const char *file, int mode) {
-	_SYSCALL_ENTRY(SYSCALL_OPEN);
-}
+int sys_open(const char *file, int mode);
+
+_SYSCALL_DECL(sys_open, SYSCALL_OPEN);
+
 
 bool _PDCLIB_open( _PDCLIB_fd_t * pFd, const _PDCLIB_fileops_t ** pOps,
                    char const * const filename, unsigned int mode )
@@ -71,7 +72,7 @@ bool _PDCLIB_open( _PDCLIB_fd_t * pFd, const _PDCLIB_fileops_t ** pOps,
 		// TODO fseek()
     }
 
-    pFd->pointer = fd;
+    pFd->sval = fd;
     *pOps = &_PDCLIB_fileops;
     return true;
 }

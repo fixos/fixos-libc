@@ -15,12 +15,17 @@
 #include <_PDCLIB_glue.h>
 #include <syscall_entry.h>
 #include <errno.h>
+#include <stdnoreturn.h>
 
+
+noreturn void sys__exit(int status);
+
+_SYSCALL_DECL(sys__exit, SYSCALL_EXIT);
 
 
 void _PDCLIB_Exit( int status )
 {
-    _SYSCALL_ENTRY(SYSCALL_EXIT);
+	sys__exit(status);
 }
 
 #endif

@@ -19,21 +19,10 @@ ssize_t sys_write(int fd, const char *source, size_t nb);
 int sys_lseek(int fd, off_t offset, int whence);
 int sys_close(int fd);
 
-ssize_t sys_read(int fd, char *dest, size_t nb) {
-	_SYSCALL_ENTRY(SYSCALL_READ);
-}
-
-ssize_t sys_write(int fd, const char *source, size_t nb) {
-	_SYSCALL_ENTRY(SYSCALL_WRITE);
-}
-
-int sys_lseek(int fd, off_t offset, int whence) {
-	_SYSCALL_ENTRY(SYSCALL_LSEEK);
-}
-
-int sys_close(int fd) {
-	_SYSCALL_ENTRY(SYSCALL_CLOSE);
-}
+_SYSCALL_DECL(sys_read, SYSCALL_READ);
+_SYSCALL_DECL(sys_write, SYSCALL_WRITE);
+_SYSCALL_DECL(sys_lseek, SYSCALL_LSEEK);
+_SYSCALL_DECL(sys_close, SYSCALL_CLOSE);
 
 static bool readf( _PDCLIB_fd_t self, void * buf, size_t length, 
                    size_t * numBytesRead )
