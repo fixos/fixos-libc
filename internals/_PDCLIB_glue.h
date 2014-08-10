@@ -26,6 +26,11 @@ _PDCLIB_BEGIN_EXTERN_C
 */
 _PDCLIB_noreturn void _PDCLIB_Exit( int status );
 
+
+/* Only defined for system with mmap-like implementation, others may have only
+   sbrk()-like way to allocate/free memory
+*/
+#ifndef _PDCLIB_NO_MMAP
 /* A system call which allocates n pages of memory and returns a pointer to 
    them. On failure, returns NULL
 */
@@ -33,6 +38,7 @@ void * _PDCLIB_allocpages( size_t n );
 
 /* A system call which frees the n pages of memory pointed to by p */
 void _PDCLIB_freepages( void * p, size_t n );
+#endif
 
 #ifdef _PDCLIB_HAVE_REALLOCPAGES
 /* A system call which attempts to reallocate the group of \p on pages starting
@@ -44,6 +50,16 @@ void _PDCLIB_freepages( void * p, size_t n );
    pages (if mayMove == false, then this must be equal to \p p)
 */
 void * _PDCLIB_reallocpages( void* p, size_t on, size_t nn, bool mayMove);
+#endif
+
+
+#ifdef _PDCLIB_HAVE_MORECORE
+/* A system call which change the size of the dynamic heap section of
+   the program, increasing it by size bytes, and return the current
+   break address.
+   This function is typically named sbrk() on most platforms.
+*/
+void * _PDCLIB_morecore(long size);
 #endif
 
 /* stdio.h */

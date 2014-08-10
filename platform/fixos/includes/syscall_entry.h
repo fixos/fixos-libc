@@ -14,6 +14,7 @@
 			"_" #name " :" \
 			"    trapa #" #id " ;" \
 			"    rts ; " \
+			"    nop ; " \
 			)
 
 // inline syscall entry method

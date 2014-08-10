@@ -44,7 +44,7 @@ static void init_malloc_global_mutex(void)
 
 #ifdef _PDCLIB_HAVE_MORECORE
 	#define HAVE_MORECORE 1
-	#define MORECORE _PDCLIB_MORECORE
+	#define MORECORE _PDCLIB_morecore
 	#define MORECORE_CONTIGUOUS _PDCLIB_MORECORE_CONTIGUOUS
 	#define MORECORE_CANNOT_TRIM _PDCLIB_MORECORE_CANNOT_TRIM
 #else

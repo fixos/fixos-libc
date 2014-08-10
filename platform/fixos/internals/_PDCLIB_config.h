@@ -314,7 +314,7 @@ typedef __builtin_va_list _PDCLIB_va_list;
 */
 #define _PDCLIB_NO_MMAP
 #define _PDCLIB_HAVE_MORECORE
-#define _PDCLIB_MORECORE sbrk
+//#define _PDCLIB_MORECORE sbrk
 #define _PDCLIB_MORECORE_CONTIGUOUS 1
 #define _PDCLIB_MORECORE_CANNOT_TRIM 0
 #define DLMALLOC_NODEFAULT
