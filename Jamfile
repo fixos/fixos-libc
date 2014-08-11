@@ -20,6 +20,10 @@ for opt in $(PDCLIB_OPTIONS) {
 
 Library $(PDCLIB) : $(PDCLIB_SOURCES) ;
 
+InstallLib $(LIBDIR) : $(PDCLIB)$(SUFLIB) ;
+InstallFilesAt $(INCLDIR) : [ RelativeGlob [ FDirName includes ] : *.h ] ;
+InstallFilesAt $(INCLDIR) : [ RelativeGlob [ FDirName internals ] : *.h ] ;
+
 if ! $(PDCLIB_NO_TEST) {
     for file in $(PDCLIB_SOURCES) {
         testfile    = $(file:S=_t) ;

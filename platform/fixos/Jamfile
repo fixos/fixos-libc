@@ -1,2 +1,9 @@
-SubDir PDCLIB_TOP platform example ;
+SubDir PDCLIB_TOP platform fixos ;
+
 PDCLibConfig ;
+
+
+InstallFilesAt $(INCLDIR) : [ RelativeGlob [ FDirName internals ] : *.h ] ;
+InstallFilesAt $(INCLDIR) : [ RelativeGlob [ FDirName includes ] : *.h ] ;
+InstallFilesAt $(INCLDIR)/fixos : [ RelativeGlob [ FDirName includes fixos ] : *.h ] ;
+

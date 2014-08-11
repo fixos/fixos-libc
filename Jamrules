@@ -1,4 +1,7 @@
-PDCLIB ?= pdclib ;
+PDCLIB ?= libpdc ;
+DESTDIR ?= ../build ;
+LIBDIR = [ FDirName $(DESTDIR) lib ] ;
+INCLDIR ?= [ FDirName $(DESTDIR) include ] ;
 
 ECHO "PDCLIB_TOP: " $(PDCLIB_TOP) ;
 
@@ -141,6 +144,19 @@ actions RegTest {
     $(>)
 }
 
+# InstallFilesAt $(DEST) : file1 file2...
+# used to install the listed files at the given location
+# destination is $(DEST)/file.ext (without directory of origin file)
+rule InstallFilesAt {
+  for _file in $(2) {
+    _OLD_SEARCH = $(SEARCH_SOURCE) ;
+    SEARCH_SOURCE = [ FDirName $(SEARCH_SOURCE) $(_file:D) ] ;
+    InstallFile $(1) : $(_file:D=) ;
+#    echo "for " $(_file) "we have " $(SEARCH_SOURCE) ;
+    SEARCH_SOURCE = $(_OLD_SEARCH) ;
+  }
+}
+
 # list all files in a directory, except ., ..
 # [ ListDir base : dirname ]
 rule ListDir {
@@ -184,6 +200,13 @@ rule RecursiveGlob {
 
   # return the resulting list
   return $(_result) ;
+}
+
+# same as glob, but using relative pathname with current dir
+# (use SEARCH_SOURCE for "current" directory)
+rule RelativeGlob {
+  _result = [ GLOB [ FDirName $(SEARCH_SOURCE) $(1) ] : $(2) ] ;
+  return $(_result:D=$(1)) ;
 }
 
 # Fix to work on targets in subdirs
