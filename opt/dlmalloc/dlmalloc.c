@@ -6254,7 +6254,7 @@ History:
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 /* TODO: TEST ME */
 int main( void )

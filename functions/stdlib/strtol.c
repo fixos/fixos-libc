@@ -34,7 +34,7 @@ long int strtol( const char * s, char ** endptr, int base )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #include <errno.h>
 

@@ -9,9 +9,9 @@
 #include <limits.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
-#include <_PDCLIB_locale.h>
-#include <_PDCLIB_clocale.h>
+#include <pdclib/io.h>
+#include <pdclib/locale.h>
+#include <pdclib/clocale.h>
 #include <threads.h>
 
 /* TODO: This is proof-of-concept, requires finetuning. */
@@ -388,7 +388,7 @@ __attribute__((constructor)) void init_stdio(void)
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

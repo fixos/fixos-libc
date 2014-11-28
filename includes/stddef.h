@@ -8,8 +8,8 @@
 
 #ifndef _PDCLIB_STDDEF_H
 #define _PDCLIB_STDDEF_H _PDCLIB_STDDEF_H
-#include <_PDCLIB_config.h>
-#include <_PDCLIB_int.h>
+#include <pdclib/config.h>
+#include <pdclib/int.h>
 _PDCLIB_BEGIN_EXTERN_C
 
 typedef _PDCLIB_ptrdiff_t ptrdiff_t;

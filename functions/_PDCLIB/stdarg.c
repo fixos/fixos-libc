@@ -11,7 +11,7 @@
 #include <float.h>
 #ifdef TEST
 
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 typedef int (*intfunc_t)( void );
 

@@ -10,8 +10,8 @@
 #include <stdlib.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
-#include <_PDCLIB_glue.h>
+#include <pdclib/io.h>
+#include <pdclib/glue.h>
 #include <string.h>
 #include <errno.h>
 
@@ -43,7 +43,7 @@ FILE * fopen( const char * _PDCLIB_restrict filename,
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

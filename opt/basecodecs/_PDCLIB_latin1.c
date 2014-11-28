@@ -7,7 +7,7 @@
 #include <stdbool.h>
 #ifndef REGTEST
 #include <uchar.h>
-#include <_PDCLIB_encoding.h>
+#include <pdclib/encoding.h>
 
 static bool latin1_mbsinit( const mbstate_t *ps )
 { return 1; }
@@ -70,7 +70,7 @@ const struct _PDCLIB_charcodec _PDCLIB_latin1_codec = {
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

@@ -22,7 +22,7 @@ lldiv_t lldiv( long long int numer, long long int denom )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

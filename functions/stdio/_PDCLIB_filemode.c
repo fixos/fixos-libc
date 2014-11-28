@@ -9,7 +9,7 @@
 #include <stddef.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 /* Helper function that parses the C-style mode string passed to fopen() into
    the PDCLib flags FREAD, FWRITE, FAPPEND, FRW (read-write) and FBIN (binary
    mode).
@@ -60,7 +60,7 @@ unsigned int _PDCLIB_filemode( char const * const mode )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

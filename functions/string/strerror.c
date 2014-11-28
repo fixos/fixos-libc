@@ -10,7 +10,7 @@
 
 #ifndef REGTEST
 
-#include <_PDCLIB_locale.h>
+#include <pdclib/locale.h>
 
 /* TODO: Doing this via a static array is not the way to do it. */
 char * strerror( int errnum )
@@ -28,7 +28,7 @@ char * strerror( int errnum )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #include <stdio.h>
 #include <errno.h>

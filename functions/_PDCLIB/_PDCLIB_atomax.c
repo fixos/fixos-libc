@@ -7,7 +7,7 @@
 */
 
 #ifndef REGTEST
-#include <_PDCLIB_int.h>
+#include <pdclib/int.h>
 #include <string.h>
 #include <ctype.h>
 
@@ -30,7 +30,7 @@ _PDCLIB_intmax_t _PDCLIB_atomax( const char * s )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

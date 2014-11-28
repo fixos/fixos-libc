@@ -39,7 +39,7 @@ void * bsearch( const void * key, const void * base, size_t nmemb, size_t size, 
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 static int compare( const void * left, const void * right )
 {

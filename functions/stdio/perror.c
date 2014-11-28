@@ -10,7 +10,7 @@
 
 #ifndef REGTEST
 #include <errno.h>
-#include <_PDCLIB_locale.h>
+#include <pdclib/locale.h>
 
 /* TODO: Doing this via a static array is not the way to do it. */
 void perror( const char * s )
@@ -33,7 +33,7 @@ void perror( const char * s )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>

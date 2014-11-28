@@ -9,7 +9,7 @@
 unsigned long int _PDCLIB_seed = 1;
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

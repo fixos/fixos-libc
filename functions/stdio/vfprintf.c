@@ -12,7 +12,7 @@
 #include <limits.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int _PDCLIB_vfprintf_unlocked( FILE * _PDCLIB_restrict stream, 
                        const char * _PDCLIB_restrict format, 
@@ -66,7 +66,7 @@ int vfprintf( FILE * _PDCLIB_restrict stream,
 #define _PDCLIB_FILEID "stdio/vfprintf.c"
 #define _PDCLIB_FILEIO
 #include <stddef.h>
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 static int testprintf( FILE * stream, const char * format, ... )
 {

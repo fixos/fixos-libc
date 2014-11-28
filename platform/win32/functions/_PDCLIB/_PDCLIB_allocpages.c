@@ -12,7 +12,7 @@
 #ifndef REGTEST
 #include <stdint.h>
 #include <stddef.h>
-#include <_PDCLIB_glue.h>
+#include <pdclib/glue.h>
 #include <errno.h>
 #include <windows.h>
 
@@ -30,7 +30,7 @@ void * _PDCLIB_allocpages( size_t n )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

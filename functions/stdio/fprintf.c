@@ -10,7 +10,7 @@
 #include <stdarg.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int _PDCLIB_fprintf_unlocked( FILE * _PDCLIB_restrict stream, 
                       const char * _PDCLIB_restrict format, ... )
@@ -44,7 +44,7 @@ int fprintf( FILE * _PDCLIB_restrict stream,
 #define _PDCLIB_FILEID "stdio/fprintf.c"
 #define _PDCLIB_FILEIO
 
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #define testprintf( stream, ... ) fprintf( stream, __VA_ARGS__ )
 

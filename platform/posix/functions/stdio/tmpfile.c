@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <_PDCLIB_glue.h>
+#include <pdclib/glue.h>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -75,7 +75,7 @@ FILE* _PDCLIB_nothrow tmpfile( void )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <string.h>
 
 int main( void )

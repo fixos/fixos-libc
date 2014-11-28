@@ -6,7 +6,7 @@
 
 #ifndef _PDCLIB_WCTYPE_H
 #define _PDCLIB_WCTYPE_H _PDCLIB_WCTYPE_H
-#include <_PDCLIB_int.h>
+#include <pdclib/int.h>
 _PDCLIB_BEGIN_EXTERN_C
 
 #ifndef _PDCLIB_WINT_T_DEFINED

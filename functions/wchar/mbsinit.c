@@ -6,8 +6,8 @@
 
 #include <wchar.h>
 #ifndef REGTEST
-#include <_PDCLIB_encoding.h>
-#include <_PDCLIB_locale.h>
+#include <pdclib/encoding.h>
+#include <pdclib/locale.h>
 
 int _PDCLIB_mbsinit_l( const mbstate_t *ps, locale_t l )
 {
@@ -26,7 +26,7 @@ int mbsinit( const mbstate_t * ps )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

@@ -29,7 +29,7 @@ int sprintf( char * _PDCLIB_restrict s, const char * _PDCLIB_restrict format, ..
 #define _PDCLIB_STRINGIO
 #include <stddef.h>
 
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #define testprintf( s, ... ) sprintf( s, __VA_ARGS__ )
 

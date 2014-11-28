@@ -20,7 +20,7 @@ void abort( void )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #include <stdio.h>
 

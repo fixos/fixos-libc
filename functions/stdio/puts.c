@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 extern char * _PDCLIB_eol;
 
@@ -53,7 +53,7 @@ int puts( const char * s )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

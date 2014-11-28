@@ -12,8 +12,8 @@
 /* would be considered a bug / missing feature: notify the author(s).         */
 /* -------------------------------------------------------------------------- */
 
-#include <_PDCLIB_config.h>
-#include <_PDCLIB_aux.h>
+#include <pdclib/config.h>
+#include <pdclib/aux.h>
 
 /* null pointer constant */
 #define _PDCLIB_NULL 0

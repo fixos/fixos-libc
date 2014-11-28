@@ -12,7 +12,7 @@
 
 #ifndef _PDCLIB_INT_H
 #define _PDCLIB_INT_H _PDCLIB_INT_H
-#include <_PDCLIB_int.h>
+#include <pdclib/int.h>
 #endif
 
 /* TODO: Primitive placeholder. Much room for improvement. */
@@ -42,7 +42,7 @@ void free( void * ptr )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <stdbool.h>
 
 int main( void )

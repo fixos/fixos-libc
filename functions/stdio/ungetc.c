@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int _PDCLIB_ungetc_unlocked( int c, FILE * stream )
 {
@@ -31,7 +31,7 @@ int ungetc( int c, FILE * stream )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <stdlib.h>
 
 const char* hellostr = "Hello, world!";

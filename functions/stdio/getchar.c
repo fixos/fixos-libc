@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int _PDCLIB_getchar_unlocked( void )
 {
@@ -25,7 +25,7 @@ int getchar( void )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

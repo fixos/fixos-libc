@@ -8,8 +8,8 @@
 
 #ifndef _PDCLIB_ASSERT_H
 #define _PDCLIB_ASSERT_H _PDCLIB_ASSERT_H
-#include <_PDCLIB_aux.h>
-#include <_PDCLIB_config.h>
+#include <pdclib/aux.h>
+#include <pdclib/config.h>
 _PDCLIB_BEGIN_EXTERN_C
 
 /* Functions _NOT_ tagged noreturn as this hampers debugging */

@@ -9,7 +9,7 @@
 #include <ctype.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_locale.h>
+#include <pdclib/locale.h>
 
 int isalnum( int c )
 {
@@ -19,7 +19,7 @@ int isalnum( int c )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

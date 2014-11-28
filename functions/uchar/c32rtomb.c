@@ -13,8 +13,8 @@
 #include <stdint.h>
 #include <assert.h>
 #include <stdlib.h>
-#include <_PDCLIB_encoding.h>
-#include <_PDCLIB_locale.h>
+#include <pdclib/encoding.h>
+#include <pdclib/locale.h>
 
 size_t c32rtomb_l(
     char        *restrict   s, 
@@ -52,7 +52,7 @@ size_t c32rtomb(
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

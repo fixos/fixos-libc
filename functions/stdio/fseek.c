@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int _PDCLIB_fseek_unlocked( FILE * stream, long loffset, int whence )
 {
@@ -47,7 +47,7 @@ int fseek( FILE * stream, long loffset, int whence )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <string.h>
 
 int main( void )

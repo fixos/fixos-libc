@@ -13,8 +13,8 @@
 #include <errno.h>
 #include <stdint.h>
 #include <assert.h>
-#include <_PDCLIB_encoding.h>
-#include <_PDCLIB_locale.h>
+#include <pdclib/encoding.h>
+#include <pdclib/locale.h>
 
 size_t mbrtowc_l(
     wchar_t    *restrict    pwc, 
@@ -86,7 +86,7 @@ size_t mbrtowc(
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

@@ -11,7 +11,7 @@
 #ifndef REGTEST
 
 #include <errno.h>
-#include <_PDCLIB_glue.h>
+#include <pdclib/glue.h>
 
 /* This is a stub implementation of tmpfile
 */
@@ -24,7 +24,7 @@ FILE* tmpfile( void )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <string.h>
 
 int main( void )

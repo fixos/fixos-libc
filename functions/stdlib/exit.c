@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 /* TODO - "except that a function is called after any previously registered
    functions that had already been called at the time it was registered.
@@ -35,7 +35,7 @@ void exit( int status )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

@@ -8,8 +8,8 @@
 #include <string.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_glue.h>
-#include <_PDCLIB_io.h>
+#include <pdclib/glue.h>
+#include <pdclib/io.h>
 
 int _PDCLIB_flushbuffer( FILE * stream )
 {
@@ -45,7 +45,7 @@ int _PDCLIB_flushbuffer( FILE * stream )
 
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

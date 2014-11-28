@@ -20,7 +20,7 @@ char * strcpy( char * _PDCLIB_restrict s1, const char * _PDCLIB_restrict s2 )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

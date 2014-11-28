@@ -35,7 +35,7 @@ char * strstr( const char * s1, const char * s2 )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

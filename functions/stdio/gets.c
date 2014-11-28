@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 #include <stdint.h>
 
 char * gets( char * s )
@@ -37,7 +37,7 @@ char * gets( char * s )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <string.h>
 
 int main( void )

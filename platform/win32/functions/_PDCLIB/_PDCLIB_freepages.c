@@ -13,7 +13,7 @@
 #include <stddef.h>
 #include <errno.h>
 #ifndef REGTEST
-#include <_PDCLIB_glue.h>
+#include <pdclib/glue.h>
 
 void _PDCLIB_freepages( void * p, size_t n )
 {
@@ -22,7 +22,7 @@ void _PDCLIB_freepages( void * p, size_t n )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

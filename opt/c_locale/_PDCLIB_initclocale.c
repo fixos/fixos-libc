@@ -5,8 +5,8 @@
 */
 
 #ifndef REGTEST
-#include "_PDCLIB_clocale.h"
-#include "_PDCLIB_locale.h"
+#include <pdclib/clocale.h>
+#include <pdclib/locale.h>
 
 void _PDCLIB_initclocale( locale_t l )
 {
@@ -19,7 +19,7 @@ void _PDCLIB_initclocale( locale_t l )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main()
 {

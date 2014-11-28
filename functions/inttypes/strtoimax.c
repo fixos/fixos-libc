@@ -34,7 +34,7 @@ intmax_t strtoimax( const char * _PDCLIB_restrict nptr, char ** _PDCLIB_restrict
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #include <errno.h>
 

@@ -8,7 +8,7 @@
 
 #ifndef _PDCLIB_LOCALE_H
 #define _PDCLIB_LOCALE_H _PDCLIB_LOCALE_H
-#include <_PDCLIB_int.h>
+#include <pdclib/int.h>
 _PDCLIB_BEGIN_EXTERN_C
 
 #ifndef _PDCLIB_NULL_DEFINED

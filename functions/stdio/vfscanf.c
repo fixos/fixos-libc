@@ -11,7 +11,7 @@
 #include <ctype.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int _PDCLIB_vfscanf_unlocked( FILE * _PDCLIB_restrict stream, 
                       const char * _PDCLIB_restrict format, 
@@ -104,7 +104,7 @@ int vfscanf( FILE * _PDCLIB_restrict stream,
 #define _PDCLIB_FILEID "stdio/vfscanf.c"
 #define _PDCLIB_FILEIO
 
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 static int testscanf( FILE * stream, char const * format, ... )
 {

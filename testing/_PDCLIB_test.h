@@ -48,6 +48,6 @@ static int TEST_RESULTS = 0;
 /* Include printf() / scanf() test macros if required */
 
 #if defined( _PDCLIB_FILEIO ) || defined( _PDCLIB_STRINGIO )
-#include "_PDCLIB_iotest.h"
+#include <pdclib/iotest.h>
 #endif
 

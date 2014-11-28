@@ -5,9 +5,9 @@
 #include <threads.h>
 #include <wchar.h> // Watcom bug: winnt.h assumes string.h defines wchar_t
 #include <windows.h>
-#include <_PDCLIB_io.h>
-#include <_PDCLIB_locale.h>
-#include <_PDCLIB_clocale.h>
+#include <pdclib/io.h>
+#include <pdclib/locale.h>
+#include <pdclib/clocale.h>
 
 static char ** argvToAnsi( wchar_t ** wargv, int argc )
 {

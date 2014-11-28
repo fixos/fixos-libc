@@ -11,7 +11,7 @@
 #include <limits.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int setvbuf( FILE * _PDCLIB_restrict stream, char * _PDCLIB_restrict buf, int mode, size_t size )
 {
@@ -76,10 +76,10 @@ int setvbuf( FILE * _PDCLIB_restrict stream, char * _PDCLIB_restrict buf, int mo
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <errno.h>
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 #endif
 #define BUFFERSIZE 500
 

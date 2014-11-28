@@ -8,7 +8,7 @@
 
 #ifndef _PDCLIB_STDIO_H
 #define _PDCLIB_STDIO_H _PDCLIB_STDIO_H
-#include <_PDCLIB_int.h>
+#include <pdclib/int.h>
 _PDCLIB_BEGIN_EXTERN_C
 
 #ifndef _PDCLIB_SIZE_T_DEFINED

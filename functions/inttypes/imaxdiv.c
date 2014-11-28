@@ -21,7 +21,7 @@ imaxdiv_t imaxdiv( intmax_t numer, intmax_t denom )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

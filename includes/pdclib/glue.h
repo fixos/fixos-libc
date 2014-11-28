@@ -6,8 +6,8 @@
    Permission is granted to use, modify, and / or redistribute at will.
 */
 
-#include <_PDCLIB_int.h>
-#include <_PDCLIB_io.h>
+#include <pdclib/int.h>
+#include <pdclib/io.h>
 #include <stdbool.h>
 #include <stddef.h>
 _PDCLIB_BEGIN_EXTERN_C

@@ -1,7 +1,7 @@
 #ifndef __PDCLIB_IO_H
 #define __PDCLIB_IO_H __PDCLIB_IO_H
-#include "_PDCLIB_int.h"
-#include "_PDCLIB_threadconfig.h"
+#include <pdclib/int.h>
+#include <pdclib/threadconfig.h>
 
 /* PDCLib internal I/O logic <_PDCLIB_io.h>
 

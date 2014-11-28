@@ -24,7 +24,7 @@ void * memcpy( void * _PDCLIB_restrict s1, const void * _PDCLIB_restrict s2, siz
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

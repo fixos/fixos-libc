@@ -25,7 +25,7 @@ wchar_t *wcsrchr(const wchar_t * haystack, wchar_t needle)
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

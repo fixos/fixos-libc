@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_glue.h>
+#include <pdclib/glue.h>
 
 #include <string.h>
 
@@ -33,7 +33,7 @@ int rename( const char * old, const char * new )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #include <stdlib.h>
 

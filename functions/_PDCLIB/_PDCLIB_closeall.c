@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 extern _PDCLIB_file_t * _PDCLIB_filelist;
 
 void _PDCLIB_closeall( void )
@@ -26,7 +26,7 @@ void _PDCLIB_closeall( void )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

@@ -10,7 +10,7 @@
 #include <stdarg.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int _PDCLIB_vscanf_unlocked( const char * _PDCLIB_restrict format, 
                              _PDCLIB_va_list arg )
@@ -29,7 +29,7 @@ int vscanf( const char * _PDCLIB_restrict format, _PDCLIB_va_list arg )
 #define _PDCLIB_FILEID "stdio/vscanf.c"
 #define _PDCLIB_FILEIO
 
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 static int testscanf( FILE * stream, const char * format, ... )
 {

@@ -16,7 +16,7 @@
 #include <limits.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 /* Using an integer's bits as flags for both the conversion flags and length
    modifiers.
@@ -536,7 +536,7 @@ const char * _PDCLIB_print( const char * spec, struct _PDCLIB_status_t * status 
 #define _PDCLIB_FILEID "_PDCLIB/print.c"
 #define _PDCLIB_STRINGIO
 
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #ifndef REGTEST
 static int testprintf( char * buffer, const char * format, ... )

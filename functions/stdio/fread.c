@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 #include <stdbool.h>
 #include <string.h>
@@ -49,7 +49,7 @@ size_t fread( void * _PDCLIB_restrict ptr,
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

@@ -6,7 +6,7 @@
 
 #include <wctype.h>
 #ifndef REGTEST
-#include <_PDCLIB_locale.h>
+#include <pdclib/locale.h>
 
 int iswgraph( wint_t wc )
 {
@@ -16,7 +16,7 @@ int iswgraph( wint_t wc )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

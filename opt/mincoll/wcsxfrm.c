@@ -18,7 +18,7 @@ size_t wcsxfrm( wchar_t * _PDCLIB_restrict s1, const wchar_t * _PDCLIB_restrict 
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

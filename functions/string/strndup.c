@@ -27,7 +27,7 @@ char *strndup( const char * s, size_t len )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

@@ -16,9 +16,9 @@
 #include <limits.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
-#include <_PDCLIB_locale.h>
-#include <_PDCLIB_encoding.h>
+#include <pdclib/io.h>
+#include <pdclib/locale.h>
+#include <pdclib/encoding.h>
 
 extern const _PDCLIB_fileops_t _PDCLIB_fileops;
 
@@ -383,7 +383,7 @@ struct _PDCLIB_locale _PDCLIB_global_locale = {
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

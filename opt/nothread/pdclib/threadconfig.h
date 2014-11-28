@@ -1,7 +1,7 @@
 #ifndef _PDCLIB_THREADCONFIG_H
 #define _PDCLIB_THREADCONFIG_H
-#include <_PDCLIB_aux.h>
-#include <_PDCLIB_config.h>
+#include <pdclib/aux.h>
+#include <pdclib/config.h>
 
 _PDCLIB_BEGIN_EXTERN_C
 #define _PDCLIB_ONCE_FLAG_INIT 0

@@ -5,8 +5,8 @@
    Permission is granted to use, modify, and / or redistribute at will.
 */
 #ifndef REGTEST
-#include <_PDCLIB_glue.h>
-#include <_PDCLIB_io.h>
+#include <pdclib/glue.h>
+#include <pdclib/io.h>
 #include <fcntl.h>
 
 extern const _PDCLIB_fileops_t _PDCLIB_fileops;
@@ -52,7 +52,7 @@ bool _PDCLIB_open(
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

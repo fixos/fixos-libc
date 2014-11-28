@@ -10,7 +10,7 @@
 #include <stdarg.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int printf( const char * _PDCLIB_restrict format, ... )
 {
@@ -40,7 +40,7 @@ int _PDCLIB_printf_unlocked( const char * _PDCLIB_restrict format, ... )
 #include <stdint.h>
 #include <stddef.h>
 
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #define testprintf( stream, ... ) printf( __VA_ARGS__ )
 

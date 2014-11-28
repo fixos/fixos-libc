@@ -11,7 +11,7 @@
  *   http://www.unicode.org/copyright.html#Exhibit1
  */
  #ifndef REGTEST
- #include <_PDCLIB_locale.h>
+ #include <pdclib/locale.h>
 
 const _PDCLIB_wcinfo_t _PDCLIB_wcinfo[] = {
 //   { value, 	length, 	flags,	lower,	upper	}, // name
@@ -29881,7 +29881,7 @@ const size_t _PDCLIB_wcinfo_size = sizeof(_PDCLIB_wcinfo) / sizeof(_PDCLIB_wcinf
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 int main( void )
 {
     return TEST_RESULTS;

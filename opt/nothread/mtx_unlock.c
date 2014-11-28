@@ -10,7 +10,7 @@ int mtx_unlock(mtx_t *mtx)
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

@@ -13,7 +13,7 @@
 #include <errno.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_glue.h>
+#include <pdclib/glue.h>
 #include <windows.h>
 
 extern const _PDCLIB_fileops_t _PDCLIB_fileops;
@@ -100,7 +100,7 @@ bool _PDCLIB_open( _PDCLIB_fd_t * pFd, const _PDCLIB_fileops_t ** pOps,
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 #include <stdlib.h>
 #include <string.h>

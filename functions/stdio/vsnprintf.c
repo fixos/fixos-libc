@@ -10,7 +10,7 @@
 #include <stdarg.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 
 int vsnprintf( char * _PDCLIB_restrict s, 
                size_t n, 
@@ -64,7 +64,7 @@ int vsnprintf( char * _PDCLIB_restrict s,
 #define _PDCLIB_STRINGIO
 #include <stdint.h>
 #include <stddef.h>
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 static int testprintf( char * s, const char * format, ... )
 {

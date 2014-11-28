@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 #ifndef REGTEST
-#include <_PDCLIB_glue.h>
+#include <pdclib/glue.h>
 #include <errno.h>
 
 void _PDCLIB_Exit( int status )
@@ -23,7 +23,7 @@ void _PDCLIB_Exit( int status )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

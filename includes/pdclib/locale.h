@@ -1,6 +1,6 @@
 #ifndef __PDCLIB_LOCALE_H
 #define __PDCLIB_LOCALE_H __PDCLIB_LOCALE_H
-#include <_PDCLIB_int.h>
+#include <pdclib/int.h>
 #include <locale.h>
 #include <wctype.h>
 #include <threads.h>

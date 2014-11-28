@@ -49,7 +49,7 @@ void _PDCLIB_w32errno(void)
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 int main( void )
 {

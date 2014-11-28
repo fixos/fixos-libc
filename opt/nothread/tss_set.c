@@ -9,7 +9,7 @@ int tss_set(tss_t key, void *val)
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 
 /* Tested in tss_get.c */
 int main( void )

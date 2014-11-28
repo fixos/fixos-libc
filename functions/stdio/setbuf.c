@@ -25,10 +25,10 @@ void setbuf( FILE * _PDCLIB_restrict stream, char * _PDCLIB_restrict buf )
 #endif
 
 #ifdef TEST
-#include <_PDCLIB_test.h>
+#include <pdclib/test.h>
 #include <stdlib.h>
 #ifndef REGTEST
-#include <_PDCLIB_io.h>
+#include <pdclib/io.h>
 #endif
 
 int main( void )

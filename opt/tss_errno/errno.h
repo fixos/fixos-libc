@@ -6,7 +6,7 @@
 
 #ifndef _PDCLIB_ERRNO_H
 #define _PDCLIB_ERRNO_H _PDCLIB_ERRNO_H
-#include <_PDCLIB_int.h>
+#include <pdclib/int.h>
 _PDCLIB_BEGIN_EXTERN_C
 
 extern int * _PDCLIB_errno_func( void );
