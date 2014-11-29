@@ -20,7 +20,7 @@ size_t c32rtomb_l(
     char        *restrict   s, 
     char32_t                c32,
     mbstate_t   *restrict   ps,
-    locale_t     restrict   l
+    _PDCLIB_locale_t     restrict   l
 )
 {
     char buf[s ? 0 : MB_CUR_MAX];

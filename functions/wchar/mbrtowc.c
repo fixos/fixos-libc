@@ -21,7 +21,7 @@ size_t mbrtowc_l(
     const char *restrict    s, 
     size_t                  n, 
     mbstate_t  *restrict    ps,
-    locale_t    restrict    l
+    _PDCLIB_locale_t    restrict    l
 )
 {
     size_t res;

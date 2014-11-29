@@ -9,6 +9,7 @@
 #define _PDCLIB_LOCALE_METHOD_TSS           't'
 #define _PDCLIB_LOCALE_METHOD_THREAD_LOCAL  'T'
 
+
 #if !defined(_PDCLIB_LOCALE_METHOD)
     /* If undefined, no POSIX per thread locales */
     #define _PDCLIB_threadlocale() (&_PDCLIB_global_locale)
@@ -116,7 +117,7 @@ static inline int _PDCLIB_wcinfo_cmp( const void * _key, const void * _obj )
     }
 }
 
-static inline _PDCLIB_wcinfo_t * _PDCLIB_wcgetinfo( locale_t l, _PDCLIB_int32_t num )
+static inline _PDCLIB_wcinfo_t * _PDCLIB_wcgetinfo( _PDCLIB_locale_t l, _PDCLIB_int32_t num )
 {
     _PDCLIB_wcinfo_t *info = (_PDCLIB_wcinfo_t*) 
         bsearch( &num, l->_WCType, l->_WCTypeSize, 
@@ -150,21 +151,21 @@ static inline wint_t _PDCLIB_unpackwint( wint_t wc )
 }
 
 /* Internal xlocale-style WCType API */
-int _PDCLIB_iswalnum_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswalpha_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswblank_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswcntrl_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswdigit_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswgraph_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswlower_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswprint_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswpunct_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswspace_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswupper_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswxdigit_l( wint_t _Wc, locale_t l );
-int _PDCLIB_iswctype_l( wint_t _Wc, wctype_t _Desc, locale_t l );
-wint_t _PDCLIB_towlower_l( wint_t _Wc, locale_t l );
-wint_t _PDCLIB_towupper_l( wint_t _Wc, locale_t l );
-wint_t _PDCLIB_towctrans_l( wint_t _Wc, wctrans_t _Desc, locale_t l );
+int _PDCLIB_iswalnum_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswalpha_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswblank_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswcntrl_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswdigit_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswgraph_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswlower_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswprint_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswpunct_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswspace_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswupper_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswxdigit_l( wint_t _Wc, _PDCLIB_locale_t l );
+int _PDCLIB_iswctype_l( wint_t _Wc, wctype_t _Desc, _PDCLIB_locale_t l );
+wint_t _PDCLIB_towlower_l( wint_t _Wc, _PDCLIB_locale_t l );
+wint_t _PDCLIB_towupper_l( wint_t _Wc, _PDCLIB_locale_t l );
+wint_t _PDCLIB_towctrans_l( wint_t _Wc, wctrans_t _Desc, _PDCLIB_locale_t l );
 
 #endif

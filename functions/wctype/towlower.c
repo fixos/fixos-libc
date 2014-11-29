@@ -8,7 +8,7 @@
 #ifndef REGTEST
 #include <pdclib/locale.h>
 
-wint_t _PDCLIB_towlower_l( wint_t wc, locale_t l )
+wint_t _PDCLIB_towlower_l( wint_t wc, _PDCLIB_locale_t l )
 {
     wint_t uwc = _PDCLIB_unpackwint( wc );
     _PDCLIB_wcinfo_t *info = _PDCLIB_wcgetinfo( l, uwc );

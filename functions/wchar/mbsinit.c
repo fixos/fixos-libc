@@ -9,7 +9,7 @@
 #include <pdclib/encoding.h>
 #include <pdclib/locale.h>
 
-int _PDCLIB_mbsinit_l( const mbstate_t *ps, locale_t l )
+int _PDCLIB_mbsinit_l( const mbstate_t *ps, _PDCLIB_locale_t l )
 {
     if( ps ) {
         return ps->_Surrogate == 0

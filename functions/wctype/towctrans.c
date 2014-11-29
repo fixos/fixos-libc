@@ -9,7 +9,7 @@
 #include <string.h>
 #include <pdclib/locale.h>
 
-wint_t _PDCLIB_towctrans_l( wint_t wc, wctrans_t trans, locale_t l )
+wint_t _PDCLIB_towctrans_l( wint_t wc, wctrans_t trans, _PDCLIB_locale_t l )
 {
     switch( trans ) {
         case 0:                         return wc;

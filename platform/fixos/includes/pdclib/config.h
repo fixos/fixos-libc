@@ -331,7 +331,7 @@ typedef __builtin_va_list _PDCLIB_va_list;
 /* Locale --------------------------------------------------------------------*/
 
 /* Locale method. See _PDCLIB_locale.h */
-/* #define _PDCLIB_LOCALE_METHOD _PDCLIB_LOCALE_METHOD_TSS */
+/*#define _PDCLIB_LOCALE_METHOD _PDCLIB_LOCALE_METHOD_TSS*/
 
 /* wchar_t encoding */
 #define _PDCLIB_WCHAR_ENCODING _PDCLIB_WCHAR_ENCODING_UCS4

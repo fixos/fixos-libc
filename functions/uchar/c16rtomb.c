@@ -20,7 +20,7 @@ size_t c16rtomb_l(
     char        *restrict   s, 
     char16_t                c16,
     mbstate_t   *restrict   ps,
-    locale_t     restrict   l
+    _PDCLIB_locale_t     restrict   l
 )
 {
     const char16_t *restrict psrc = &c16;

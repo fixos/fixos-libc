@@ -92,6 +92,12 @@ char * setlocale( int category, const char * locale ) _PDCLIB_nothrow;
 */
 struct lconv * localeconv( void ) _PDCLIB_nothrow;
 
+
+/* Global locale, for now defined *outside* the POSIX section because of
+   some usage into some PDCLib function
+*/
+extern struct _PDCLIB_locale _PDCLIB_global_locale;
+
 #if _PDCLIB_POSIX_MIN(2008)
 #define LC_COLLATE_MASK  (1 << LC_COLLATE)
 #define LC_CTYPE_MASK    (1 << LC_CTYPE)
@@ -106,7 +112,6 @@ struct lconv * localeconv( void ) _PDCLIB_nothrow;
 typedef _PDCLIB_locale_t locale_t;
 
 /* Global locale */
-extern struct _PDCLIB_locale _PDCLIB_global_locale;
 #define LC_GLOBAL_LOCALE (&_PDCLIB_global_locale)
 
 #ifdef _PDCLIB_LOCALE_METHOD

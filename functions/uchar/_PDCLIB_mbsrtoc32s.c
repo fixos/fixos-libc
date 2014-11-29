@@ -22,7 +22,7 @@ size_t _PDCLIB_mbsrtoc32s_l
     const char     **restrict   src, 
     size_t                      len, 
     mbstate_t       *restrict   ps,
-    locale_t         restrict   l
+    _PDCLIB_locale_t         restrict   l
 )
 {
     size_t dstlen = len = dst ? len : SIZE_MAX;

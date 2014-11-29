@@ -9,7 +9,7 @@
 #include <locale.h>
 _PDCLIB_BEGIN_EXTERN_C
 
-void _PDCLIB_initclocale( locale_t l );
+void _PDCLIB_initclocale( _PDCLIB_locale_t l );
 
 _PDCLIB_END_EXTERN_C
 #endif // _PDCLIB_CLOCALE_H

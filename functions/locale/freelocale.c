@@ -9,7 +9,7 @@
 #include <pdclib/locale.h>
 #include <assert.h>
 
-void freelocale( locale_t newloc )
+void freelocale( _PDCLIB_locale_t newloc )
 {
     if( newloc != NULL ) {
         assert( ! "Not implemented" );

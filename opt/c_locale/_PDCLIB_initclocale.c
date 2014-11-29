@@ -8,7 +8,7 @@
 #include <pdclib/clocale.h>
 #include <pdclib/locale.h>
 
-void _PDCLIB_initclocale( locale_t l )
+void _PDCLIB_initclocale( _PDCLIB_locale_t l )
 {
     // TODO: There will be more added here...
 

@@ -20,7 +20,7 @@ size_t wcrtomb_l(
     char        *restrict   s, 
     wchar_t                 wc,
     mbstate_t   *restrict   ps,
-    locale_t     restrict   l
+    _PDCLIB_locale_t     restrict   l
 )
 {
     return _PDCLIB_cwcrtomb_l(s, wc, ps, l);

@@ -89,7 +89,7 @@ include_directories(BEFORE SYSTEM ${ALL_INCLUDE_DIRS})
 
 # not used flags, which was used in the Jamrules file  "-ffunction-sections -fdata-sections"
 set(C_WARNING "-Wall -Wextra -Wno-unused-parameter -Wshadow -Wpointer-arith -Wwrite-strings -Wmissing-declarations -Wno-long-long -Wuninitialized -pedantic -Wnested-externs -Wstrict-prototypes -Wmissing-prototypes")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_WARNING} -std=c11 -D_POSIX_C_SOURCE=2008 -Os -ffreestanding -nostdinc")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_WARNING} -std=c11 -Os -ffreestanding -nostdinc")
 message("CFLAGS: ${CMAKE_C_FLAGS}")
 
 

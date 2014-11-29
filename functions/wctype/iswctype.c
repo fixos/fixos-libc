@@ -8,7 +8,7 @@
 #ifndef REGTEST
 #include <pdclib/locale.h>
 
-int _PDCLIB_iswctype_l( wint_t wc, wctype_t desc, locale_t l )
+int _PDCLIB_iswctype_l( wint_t wc, wctype_t desc, _PDCLIB_locale_t l )
 {
     wc = _PDCLIB_unpackwint( wc );
 
