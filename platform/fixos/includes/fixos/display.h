@@ -6,8 +6,8 @@
  * to a real screen with low overhead.
  */
 
-#include "types.h"
-#include "ioctl.h"
+#include <fixos/types.h>
+#include <fixos/ioctl.h>
 
 
 enum display_format {
@@ -16,18 +16,14 @@ enum display_format {
 };
 
 struct display_info {
-	size_t width;
-	size_t height;
-	size_t bpp;		// bits per pixel
+	__kernel_size_t width;
+	__kernel_size_t height;
+	__kernel_size_t bpp;		// bits per pixel
 	enum display_format format;
-	size_t vram_size;
+	__kernel_size_t vram_size;
 	int flags;		// additional capabilities...
 };
 
-struct display_sigstates {
-	int sig_activated;
-	int sig_deactivated;
-};
 
 #define DISPCTL			IOCTL_NAMESPACE('D', 'I')
 

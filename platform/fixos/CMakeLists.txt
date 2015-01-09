@@ -1,5 +1,7 @@
 message("Building PDCLib for FiXos/sh3 target!")
 
+# build POSIX functions
+pdclib_set_posix(YES)
 
 file(GLOB_RECURSE TMP_SOURCES RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/functions" "functions/*.c")
 add_base_sources("${TMP_SOURCES}")

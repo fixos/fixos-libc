@@ -1,15 +1,15 @@
 #ifndef _FIXOS_INTERFACE_STAT_H
 #define _FIXOS_INTERFACE_STAT_H
 
-#include "types.h"
+#include <fixos/types.h>
 
 struct stat {
-	dev_t st_dev;
-	ino_t st_ino;
-	mode_t st_mode;
+	__kernel_dev_t st_dev;
+	__kernel_ino_t st_ino;
+	__kernel_mode_t st_mode;
 
-	dev_t st_rdev;
-	off_t st_size;
+	__kernel_dev_t st_rdev;
+	__kernel_off_t st_size;
 };
 
 

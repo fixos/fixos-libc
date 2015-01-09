@@ -15,13 +15,9 @@
 #ifndef REGTEST
 #include <pdclib/glue.h>
 #include <fixos/fcntl.h>
-#include <syscall_entry.h>
+#include <bits/inline_syscalls.h>
 
 extern const _PDCLIB_fileops_t _PDCLIB_fileops;
-
-int sys_open(const char *file, int mode);
-
-_SYSCALL_DECL(sys_open, SYSCALL_OPEN);
 
 
 bool _PDCLIB_open( _PDCLIB_fd_t * pFd, const _PDCLIB_fileops_t ** pOps,
@@ -61,10 +57,9 @@ bool _PDCLIB_open( _PDCLIB_fd_t * pFd, const _PDCLIB_fileops_t ** pOps,
         return false;
     }
 
-	int fd = sys_open(filename, realMode);
+	int fd = _IN_open(filename, realMode);
 
     if(fd < 0) {
-		errno = -fd;
         return false;
     }
 

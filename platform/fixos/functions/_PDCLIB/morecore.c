@@ -10,17 +10,14 @@
 #include <stddef.h>
 #include <pdclib/glue.h>
 #include <errno.h>
-#include <syscall_entry.h>
-
-void *sys_sbrk(int size);
-
-_SYSCALL_DECL(sys_sbrk, SYSCALL_SBRK);
-
+#include <bits/inline_syscalls.h>
 
 void * _PDCLIB_morecore( long size )
 {
 	void *ret;
-	ret = sys_sbrk((int)size);
+	ret = _IN_sbrk((int)size);
+
+	// FIXME sbrk syscall will change!
 	if(ret == NULL)
 		errno = ENOMEM;
 	return ret;

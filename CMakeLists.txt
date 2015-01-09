@@ -32,6 +32,10 @@ function(add_pdclib_option OPT)
 	set_property(GLOBAL APPEND PROPERTY LibOptions ${OPT})
 endfunction(add_pdclib_option)
 
+function(pdclib_set_posix ENABLE)
+	set_property(GLOBAL PROPERTY PDCLibPosixEnable ${ENABLE})
+endfunction(pdclib_set_posix)
+
 
 # prepare target directory...
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/platform/${PDCLIB_TARGET}")
@@ -52,6 +56,16 @@ foreach(OPT ${ALL_OPTIONS})
 	add_source_topdir("${CMAKE_CURRENT_SOURCE_DIR}/opt/${OPT}")
 	add_header_topdir("${CMAKE_CURRENT_SOURCE_DIR}/opt/${OPT}")
 endforeach(OPT)
+
+
+# prepare POSIX source and header tree if needed
+get_property(POSIX_ENABLE GLOBAL PROPERTY PDCLibPosixEnable)
+if(${POSIX_ENABLE})
+	file(GLOB_RECURSE TMP_SOURCES RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/posix/functions" "posix/functions/*.c")
+	add_base_sources("${TMP_SOURCES}")
+	add_source_topdir("${CMAKE_CURRENT_SOURCE_DIR}/posix/functions")
+	add_header_topdir("${CMAKE_CURRENT_SOURCE_DIR}/posix/includes")
+endif()
 
 
 

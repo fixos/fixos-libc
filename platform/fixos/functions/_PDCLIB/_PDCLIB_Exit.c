@@ -13,19 +13,13 @@
 
 #ifndef REGTEST
 #include <pdclib/glue.h>
-#include <syscall_entry.h>
-#include <errno.h>
+#include <bits/inline_syscalls.h>
 #include <stdnoreturn.h>
-
-
-noreturn void sys__exit(int status);
-
-_SYSCALL_DECL(sys__exit, SYSCALL_EXIT);
 
 
 void _PDCLIB_Exit( int status )
 {
-	sys__exit(status);
+	_IN_exit(status);
 }
 
 #endif
