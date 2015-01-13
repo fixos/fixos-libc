@@ -37,12 +37,12 @@ function(pdclib_set_posix ENABLE)
 endfunction(pdclib_set_posix)
 
 
-# prepare target directory...
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/platform/${PDCLIB_TARGET}")
-	add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/platform/${PDCLIB_TARGET}")
-else()
-	message(FATAL_ERROR "Not found target platform '${PDCLIB_TARGET}'.")
-endif()
+# prepare target directory (now only FiXos, PDCLIB_TARGET is not more used)
+#if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/platform/${PDCLIB_TARGET}")
+	add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/fixos")
+#else()
+#	message(FATAL_ERROR "Not found target platform '${PDCLIB_TARGET}'.")
+#endif()
 
 
 # prepare each option directory
