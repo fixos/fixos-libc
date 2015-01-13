@@ -24,7 +24,7 @@
  */
 
 #define _SYSCALL_INLINEDEF_0(name, sysno, rettype) \
-	extern inline rettype _IN_##name () { \
+	static inline rettype _IN_##name () { \
 		register int retval __asm__("r0"); \
 		__asm__ volatile ("trapa %1;" : "=r"(retval) : "n"(sysno)); \
 		_SYSCALL_CHECK_ERROR(retval); \
@@ -33,7 +33,7 @@
 
 
 #define _SYSCALL_INLINEDEF_1(name, sysno, rettype, type1) \
-	extern inline rettype _IN_##name (type1 _arg1) { \
+	static inline rettype _IN_##name (type1 _arg1) { \
 		register int retval __asm__("r0"); \
 		register int arg1 __asm__("r4") = (int)_arg1; \
 		__asm__ volatile ("trapa %1;" : "=r"(retval) : "n"(sysno), "r"(arg1)); \
@@ -42,7 +42,7 @@
 	}
 
 #define _SYSCALL_INLINEDEF_2(name, sysno, rettype, type1, type2) \
-	extern inline rettype _IN_##name (type1 _arg1, type2 _arg2) { \
+	static inline rettype _IN_##name (type1 _arg1, type2 _arg2) { \
 		register int retval __asm__("r0"); \
 		register int arg1 __asm__("r4") = (int)_arg1; \
 		register int arg2 __asm__("r5") = (int)_arg2; \
@@ -53,7 +53,7 @@
 
 
 #define _SYSCALL_INLINEDEF_3(name, sysno, rettype, type1, type2, type3) \
-	extern inline rettype _IN_##name (type1 _arg1, type2 _arg2, type3 _arg3) { \
+	static inline rettype _IN_##name (type1 _arg1, type2 _arg2, type3 _arg3) { \
 		register int retval __asm__("r0"); \
 		register int arg1 __asm__("r4") = (int)_arg1; \
 		register int arg2 __asm__("r5") = (int)_arg2; \
@@ -65,7 +65,7 @@
 
 
 #define _SYSCALL_INLINEDEF_4(name, sysno, rettype, type1, type2, type3, type4) \
-	extern inline rettype _IN_##name (type1 _arg1, type2 _arg2, type3 _arg3, type4 _arg4) { \
+	static inline rettype _IN_##name (type1 _arg1, type2 _arg2, type3 _arg3, type4 _arg4) { \
 		register int retval __asm__("r0"); \
 		register int arg1 __asm__("r4") = (int)_arg1; \
 		register int arg2 __asm__("r5") = (int)_arg2; \
