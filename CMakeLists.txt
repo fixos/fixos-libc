@@ -4,6 +4,13 @@ project(fixos-libc C)
 
 #set(PDCLIB_TARGET "" CACHE STRING "Target environment name for PDCLib")
 
+# FiXos Kernel Headers path
+set(KERNEL_HEADERS "" CACHE STRING "Path to the FiXos kernel headers (interface/ directory)")
+
+if(NOT EXISTS "${KERNEL_HEADERS}")
+	message(FATAL_ERROR "KERNEL_HEADERS is not a valid directory (should be the path to kernel header files)")
+endif(NOT EXISTS "${KERNEL_HEADERS}")
+
 
 # prepare target directory (now only FiXos, PDCLIB_TARGET is not more used)
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/fixos")
@@ -11,8 +18,10 @@ project(fixos-libc C)
 
 
 # prepare main source files
-set(PUBLIC_INCLUDE_DIR	includes/)
-set(ALL_INCLUDE_DIRS ${PUBLIC_INCLUDE_DIR})
+set(PUBLIC_INCLUDE_DIR "includes/")
+set(KERNEL_INCLUDE_DIR "${KERNEL_HEADERS}")
+set(ALL_INCLUDE_DIRS ${PUBLIC_INCLUDE_DIR} ${KERNEL_INCLUDE_DIR})
+
 file(GLOB_RECURSE ALL_LIB_SOURCES "functions/*.c")
 
 
@@ -45,7 +54,8 @@ install(TARGETS libc
 		PUBLIC_HEADER DESTINATION include
 		ARCHIVE DESTINATION lib)
 
-install(DIRECTORY ${PUBLIC_INCLUDE_DIR} DESTINATION include PATTERN "${PUBLIC_INCLUDE_DIR}/*" )
+install(DIRECTORY ${PUBLIC_INCLUDE_DIR} DESTINATION include PATTERN "${PUBLIC_INCLUDE_DIR}/*.h" )
+install(DIRECTORY ${KERNEL_INCLUDE_DIR} DESTINATION include PATTERN "${KERNEL_INCLUDE_DIR}/*.h" )
 
 
 # create the include tree in build directory
