@@ -1,7 +1,7 @@
 FiXos userland C library (libc)
 ===============
 
-What is the libc
+What the FiXos libc is
 ----------------
 Basically, all UNIX-like OSes and some other provide their low-level interface
 as a C library.
@@ -19,6 +19,10 @@ basic UNIX applications.
 It is possible that some FiXos-specific APIs will be added to this library,
 but for now the goal is to have functions and headers from the standards
 implemented.
+
+Compiling and installing this library
+--------------------
+See instructions in the INSTALL.md file to know how to build FiXos libc.
 
 
 ISO C implementation - PDCLib
