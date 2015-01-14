@@ -28,3 +28,15 @@ If you have no error, you can build FiXos with the backend used by CMake
 
 And finally to install compiled library and public headers, install it :   
 >    $ make install   
+
+
+Build HTML man pages
+-----------
+If you want to generate html documentation pages, you need to install
+[mdocml](http://mdocml.bsd.lv/) software.
+Simply add parameter "-DHTML\_DOC=ON" when you run cmake, and then run the
+make target :
+>    $ make documentation
+>    $ make install
+
+HTML files will be installed in a "doc/" subdirectory of your install directory.
