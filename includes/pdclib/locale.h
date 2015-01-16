@@ -89,7 +89,7 @@ struct _PDCLIB_locale {
     /* ctype / wctype */
     /* XXX: Maybe re-evaluate constness of these later on? */
     const _PDCLIB_wcinfo_t      *_WCType;
-    _PDCLIB_size_t               _WCTypeSize;
+    size_t               _WCTypeSize;
     const _PDCLIB_ctype_t       *_CType; 
 
     /* perror/strerror */

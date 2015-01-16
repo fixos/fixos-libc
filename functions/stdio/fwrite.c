@@ -25,7 +25,7 @@ size_t _PDCLIB_fwrite_unlocked( const void * _PDCLIB_restrict ptr,
     {
         return 0;
     }
-    _PDCLIB_size_t offset = 0;
+    size_t offset = 0;
     //bool lineend = false;
     size_t nmemb_i;
     for ( nmemb_i = 0; nmemb_i < nmemb; ++nmemb_i )

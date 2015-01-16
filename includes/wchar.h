@@ -8,12 +8,12 @@
 #ifndef _PDCLIB_WCHAR_H
 #define _PDCLIB_WCHAR_H
 #include <pdclib/int.h>
+#include <stdarg.h>
+
 _PDCLIB_BEGIN_EXTERN_C
 
-#ifndef _PDCLIB_SIZE_T_DEFINED
-#define _PDCLIB_SIZE_T_DEFINED _PDCLIB_SIZE_T_DEFINED
-typedef _PDCLIB_size_t size_t;
-#endif
+#define __need_size_t
+#include <bits/types.h>
 
 #ifndef __cplusplus
 #ifndef _PDCLIB_WCHAR_T_DEFINED
@@ -81,12 +81,12 @@ int fwprintf(_PDCLIB_file_t *_PDCLIB_restrict stream, const wchar_t *_PDCLIB_res
 int fwscanf(_PDCLIB_file_t *_PDCLIB_restrict stream, const wchar_t *_PDCLIB_restrict format, ...);
 int swprintf(wchar_t *_PDCLIB_restrict s, size_t n, const wchar_t *_PDCLIB_restrict format, ...);
 int swscanf(const wchar_t *_PDCLIB_restrict s, const wchar_t *_PDCLIB_restrict format, ...);
-int vfwprintf(_PDCLIB_file_t *_PDCLIB_restrict stream, const wchar_t *_PDCLIB_restrict format, _PDCLIB_va_list arg);
-int vfwscanf(_PDCLIB_file_t *_PDCLIB_restrict stream, const wchar_t *_PDCLIB_restrict format, _PDCLIB_va_list arg);
-int vswprintf(wchar_t *_PDCLIB_restrict s, size_t n, const wchar_t *_PDCLIB_restrict format, _PDCLIB_va_list arg);
-int vswscanf(const wchar_t *_PDCLIB_restrict s, const wchar_t *_PDCLIB_restrict format, _PDCLIB_va_list arg);
-int vwprintf(const wchar_t *_PDCLIB_restrict format, _PDCLIB_va_list arg);
-int vwscanf(const wchar_t *_PDCLIB_restrict format, _PDCLIB_va_list arg);
+int vfwprintf(_PDCLIB_file_t *_PDCLIB_restrict stream, const wchar_t *_PDCLIB_restrict format, va_list arg);
+int vfwscanf(_PDCLIB_file_t *_PDCLIB_restrict stream, const wchar_t *_PDCLIB_restrict format, va_list arg);
+int vswprintf(wchar_t *_PDCLIB_restrict s, size_t n, const wchar_t *_PDCLIB_restrict format, va_list arg);
+int vswscanf(const wchar_t *_PDCLIB_restrict s, const wchar_t *_PDCLIB_restrict format, va_list arg);
+int vwprintf(const wchar_t *_PDCLIB_restrict format, va_list arg);
+int vwscanf(const wchar_t *_PDCLIB_restrict format, va_list arg);
 int wprintf(const wchar_t *_PDCLIB_restrict format, ...);
 int wscanf(const wchar_t *_PDCLIB_restrict format, ...);
 wint_t fgetwc(_PDCLIB_file_t *stream);

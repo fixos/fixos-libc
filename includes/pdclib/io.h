@@ -2,6 +2,10 @@
 #define __PDCLIB_IO_H __PDCLIB_IO_H
 #include <pdclib/int.h>
 #include <pdclib/threadconfig.h>
+#include <stdarg.h>
+
+#define __need_size_t
+#include <bits/types.h>
 
 /* PDCLib internal I/O logic <_PDCLIB_io.h>
 
@@ -124,8 +128,8 @@ struct _PDCLIB_fileops
      */
     _PDCLIB_bool (*read)( _PDCLIB_fd_t self, 
                           void * buf, 
-                          _PDCLIB_size_t length, 
-                          _PDCLIB_size_t * numBytesRead );
+                          size_t length, 
+                          size_t * numBytesRead );
 
     /*! Write length bytes to the file from buf; returning the number of bytes
      *  actually written in *numBytesWritten
@@ -135,7 +139,7 @@ struct _PDCLIB_fileops
      *  ignored)
      */
     _PDCLIB_bool (*write)( _PDCLIB_fd_t self, const void * buf, 
-                   _PDCLIB_size_t length, _PDCLIB_size_t * numBytesWritten );
+                   size_t length, size_t * numBytesWritten );
 
     /* Seek to the file offset specified by offset, from location whence, which
      * may be one of the standard constants SEEK_SET/SEEK_CUR/SEEK_END
@@ -154,7 +158,7 @@ struct _PDCLIB_fileops
      *  example, the Windows console)
      */
     _PDCLIB_bool (*wread)( _PDCLIB_fd_t self, _PDCLIB_wchar_t * buf, 
-                     _PDCLIB_size_t length, _PDCLIB_size_t * numCharsRead );
+                     size_t length, size_t * numCharsRead );
 
     /* Behaves as write does, except for wide characters. As with wread, both
      * length and *numCharsWritten are character counts.
@@ -165,7 +169,7 @@ struct _PDCLIB_fileops
      * take wide characters (for example, the Windows console)
      */
     _PDCLIB_bool (*wwrite)( _PDCLIB_fd_t self, const _PDCLIB_wchar_t * buf, 
-                     _PDCLIB_size_t length, _PDCLIB_size_t * numCharsWritten );
+                     size_t length, size_t * numCharsWritten );
 };
 
 /* struct _PDCLIB_file structure */
@@ -175,10 +179,10 @@ struct _PDCLIB_file
     _PDCLIB_fd_t              handle;   /* OS file handle */
     _PDCLIB_MTX_T             lock;     /* file lock */
     char *                    buffer;   /* Pointer to buffer memory */
-    _PDCLIB_size_t            bufsize;  /* Size of buffer */
-    _PDCLIB_size_t            bufidx;   /* Index of current position in buffer */
-    _PDCLIB_size_t            bufend;   /* Index of last pre-read character in buffer */
-    _PDCLIB_size_t            ungetidx; /* Number of ungetc()'ed characters */
+    size_t            bufsize;  /* Size of buffer */
+    size_t            bufidx;   /* Index of current position in buffer */
+    size_t            bufend;   /* Index of last pre-read character in buffer */
+    size_t            ungetidx; /* Number of ungetc()'ed characters */
     unsigned char *           ungetbuf; /* ungetc() buffer */
     unsigned int              status;   /* Status flags; see above */
     /* multibyte parsing status to be added later */
@@ -187,11 +191,11 @@ struct _PDCLIB_file
     _PDCLIB_file_t *          next;     /* Pointer to next struct (internal) */
 };
 
-static inline _PDCLIB_size_t _PDCLIB_getchars( char * out, _PDCLIB_size_t n,
+static inline size_t _PDCLIB_getchars( char * out, size_t n,
                                                int stopchar,
                                                _PDCLIB_file_t * stream )
 {
-    _PDCLIB_size_t i = 0;
+    size_t i = 0;
     int c;
     while ( stream->ungetidx > 0 && i != n )
     {
@@ -243,8 +247,8 @@ int _PDCLIB_ferror_unlocked(struct _PDCLIB_file *stream) _PDCLIB_nothrow;
 int _PDCLIB_fflush_unlocked(struct _PDCLIB_file *stream) _PDCLIB_nothrow;
 int _PDCLIB_fgetc_unlocked(struct _PDCLIB_file *stream) _PDCLIB_nothrow;
 int _PDCLIB_fputc_unlocked(int c, struct _PDCLIB_file *stream) _PDCLIB_nothrow;
-_PDCLIB_size_t _PDCLIB_fread_unlocked(void *ptr, _PDCLIB_size_t size, _PDCLIB_size_t n, struct _PDCLIB_file *stream) _PDCLIB_nothrow;
-_PDCLIB_size_t _PDCLIB_fwrite_unlocked(const void *ptr, _PDCLIB_size_t size, _PDCLIB_size_t n, struct _PDCLIB_file *stream) _PDCLIB_nothrow;
+size_t _PDCLIB_fread_unlocked(void * _PDCLIB_restrict ptr, size_t size, size_t n, struct _PDCLIB_file * _PDCLIB_restrict stream) _PDCLIB_nothrow;
+size_t _PDCLIB_fwrite_unlocked(const void *ptr, size_t size, size_t n, struct _PDCLIB_file *stream) _PDCLIB_nothrow;
 char *_PDCLIB_fgets_unlocked(char *s, int n, struct _PDCLIB_file *stream) _PDCLIB_nothrow;
 int _PDCLIB_fputs_unlocked(const char *s, struct _PDCLIB_file *stream) _PDCLIB_nothrow;
 int _PDCLIB_fgetpos_unlocked( struct _PDCLIB_file * _PDCLIB_restrict stream, _PDCLIB_fpos_t * _PDCLIB_restrict pos ) _PDCLIB_nothrow;
@@ -258,12 +262,12 @@ int _PDCLIB_ungetc_unlocked( int c, struct _PDCLIB_file * stream ) _PDCLIB_nothr
 
 
 int _PDCLIB_printf_unlocked( const char * _PDCLIB_restrict format, ... ) _PDCLIB_nothrow;
-int _PDCLIB_vprintf_unlocked( const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int _PDCLIB_vprintf_unlocked( const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 int _PDCLIB_fprintf_unlocked( struct _PDCLIB_file * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, ... ) _PDCLIB_nothrow;
-int _PDCLIB_vfprintf_unlocked( struct _PDCLIB_file * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int _PDCLIB_vfprintf_unlocked( struct _PDCLIB_file * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 int _PDCLIB_scanf_unlocked( const char * _PDCLIB_restrict format, ... ) _PDCLIB_nothrow;
-int _PDCLIB_vscanf_unlocked( const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int _PDCLIB_vscanf_unlocked( const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 int _PDCLIB_fscanf_unlocked( struct _PDCLIB_file * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, ... ) _PDCLIB_nothrow;
-int _PDCLIB_vfscanf_unlocked( struct _PDCLIB_file * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int _PDCLIB_vfscanf_unlocked( struct _PDCLIB_file * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 #endif

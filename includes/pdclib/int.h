@@ -227,7 +227,8 @@ typedef _PDCLIB_ptrdiff     _PDCLIB_ptrdiff_t;
 #define _PDCLIB_SIG_ATOMIC_MIN _PDCLIB_concat( _PDCLIB_concat( _PDCLIB_, _PDCLIB_SIG_ATOMIC ), _MIN )
 #define _PDCLIB_SIG_ATOMIC_MAX _PDCLIB_concat( _PDCLIB_concat( _PDCLIB_, _PDCLIB_SIG_ATOMIC ), _MAX )
 
-typedef _PDCLIB_size     _PDCLIB_size_t;
+// FIXME strange behavior : size_t itself is defined by the kernel, and its
+// max is defined here...
 #define _PDCLIB_SIZE_MAX _PDCLIB_concat( _PDCLIB_concat( _PDCLIB_, _PDCLIB_SIZE ), _MAX )
 
 typedef _PDCLIB_wint      _PDCLIB_wint_t;
@@ -253,35 +254,7 @@ typedef unsigned _PDCLIB_intmax _PDCLIB_uintmax_t;
 #define _PDCLIB_INTMAX_C( value )  _PDCLIB_concat( value, _PDCLIB_INTMAX_LITERAL )
 #define _PDCLIB_UINTMAX_C( value ) _PDCLIB_concat( value, _PDCLIB_concat( u, _PDCLIB_INTMAX_LITERAL ) )
 
-/* -------------------------------------------------------------------------- */
-/* Various <time.h> internals                                                 */
-/* -------------------------------------------------------------------------- */
 
-typedef _PDCLIB_time            _PDCLIB_time_t;
-typedef _PDCLIB_clock           _PDCLIB_clock_t;
-
-#if !defined(_PDCLIB_DEFINE_STRUCT_TIMESPEC)
-#define _PDCLIB_DEFINE_STRUCT_TIMESPEC()    \
-    struct timespec {                       \
-        time_t tv_sec;                      \
-        long tv_nsec;                       \
-    };
-#endif
-
-#if !defined(_PDCLIB_DEFINE_STRUCT_TM)
-#define _PDCLIB_DEFINE_STRUCT_TM()          \
-    struct tm {                             \
-        int tm_sec;                         \
-        int tm_min;                         \
-        int tm_hour;                        \
-        int tm_mday;                        \
-        int tm_mon;                         \
-        int tm_year;                        \
-        int tm_wday;                        \
-        int tm_yday;                        \
-        int tm_isdst;                       \
-    };
-#endif
 
 /* -------------------------------------------------------------------------- */
 /* Internal data types                                                        */
@@ -355,7 +328,8 @@ typedef struct _PDCLIB_charcodec *_PDCLIB_charcodec_t;
 typedef struct _PDCLIB_locale    *_PDCLIB_locale_t;
 typedef struct lconv              _PDCLIB_lconv_t;
 
-_PDCLIB_size_t _PDCLIB_mb_cur_max( void );
+// FIXME should return a size_t
+unsigned int _PDCLIB_mb_cur_max( void );
 
 /* -------------------------------------------------------------------------- */
 /* stdio                                                                      */
@@ -386,7 +360,8 @@ struct _PDCLIB_status_t
     unsigned         width;  /* specified field width                        */
     int              prec;   /* specified field precision                    */
     _PDCLIB_file_t * stream; /* *fprintf() / *fscanf() stream         */
-    _PDCLIB_va_list  arg;    /* argument stack                               */
+    // yes, we really assume we are using GCC...
+    __builtin_va_list  arg;  /* argument stack                               */
 };
 
 #endif

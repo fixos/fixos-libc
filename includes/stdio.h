@@ -9,12 +9,12 @@
 #ifndef _PDCLIB_STDIO_H
 #define _PDCLIB_STDIO_H _PDCLIB_STDIO_H
 #include <pdclib/int.h>
+#include <stdarg.h>
+
 _PDCLIB_BEGIN_EXTERN_C
 
-#ifndef _PDCLIB_SIZE_T_DEFINED
-#define _PDCLIB_SIZE_T_DEFINED _PDCLIB_SIZE_T_DEFINED
-typedef _PDCLIB_size_t size_t;
-#endif
+#define __need_size_t
+#include <bits/types.h>
 
 #ifndef _PDCLIB_NULL_DEFINED
 #define _PDCLIB_NULL_DEFINED _PDCLIB_NULL_DEFINED
@@ -605,45 +605,45 @@ int sscanf( const char * _PDCLIB_restrict s, const char * _PDCLIB_restrict forma
    is passed as va_list parameter. Note that va_list is not declared by
    <stdio.h>.
 */
-int vfprintf( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vfprintf( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 /* Equivalent to fscanf( stream, format, ... ), except that the argument stack
    is passed as va_list parameter. Note that va_list is not declared by
    <stdio.h>.
 */
-int vfscanf( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vfscanf( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 /* Equivalent to fprintf( stdout, format, ... ), except that the argument stack
    is passed as va_list parameter. Note that va_list is not declared by
    <stdio.h>.
 */
-int vprintf( const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vprintf( const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 /* Equivalent to fscanf( stdin, format, ... ), except that the argument stack
    is passed as va_list parameter. Note that va_list is not declared by
    <stdio.h>.
 */
-int vscanf( const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vscanf( const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 /* Equivalent to snprintf( s, n, format, ... ), except that the argument stack
    is passed as va_list parameter. Note that va_list is not declared by
    <stdio.h>.
    */
-int vsnprintf( char * _PDCLIB_restrict s, size_t n, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vsnprintf( char * _PDCLIB_restrict s, size_t n, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 /* Equivalent to fprintf( stdout, format, ... ), except that the argument stack
    is passed as va_list parameter, and the result is written to the buffer
    pointed to by s, instead of stdout. Note that va_list is not declared by
    <stdio.h>.
 */
-int vsprintf( char * _PDCLIB_restrict s, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vsprintf( char * _PDCLIB_restrict s, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 /* Equivalent to fscanf( stdin, format, ... ), except that the argument stack
    is passed as va_list parameter, and the input is read from the buffer
    pointed to by s, instead of stdin. Note that va_list is not declared by
    <stdio.h>.
 */
-int vsscanf( const char * _PDCLIB_restrict s, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vsscanf( const char * _PDCLIB_restrict s, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 /* Character input/output functions */
 
@@ -878,13 +878,13 @@ int ungetc_unlocked( int c, FILE * stream ) _PDCLIB_nothrow;
 
 
 int printf_unlocked( const char * _PDCLIB_restrict format, ... ) _PDCLIB_nothrow;
-int vprintf_unlocked( const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vprintf_unlocked( const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 int fprintf_unlocked( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, ... ) _PDCLIB_nothrow;
-int vfprintf_unlocked( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vfprintf_unlocked( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 int scanf_unlocked( const char * _PDCLIB_restrict format, ... ) _PDCLIB_nothrow;
-int vscanf_unlocked( const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vscanf_unlocked( const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 int fscanf_unlocked( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, ... ) _PDCLIB_nothrow;
-int vfscanf_unlocked( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, _PDCLIB_va_list arg ) _PDCLIB_nothrow;
+int vfscanf_unlocked( FILE * _PDCLIB_restrict stream, const char * _PDCLIB_restrict format, va_list arg ) _PDCLIB_nothrow;
 
 
 // Todo: remove prefix?

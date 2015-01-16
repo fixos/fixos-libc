@@ -14,10 +14,8 @@ _PDCLIB_BEGIN_EXTERN_C
 
 typedef _PDCLIB_ptrdiff_t ptrdiff_t;
 
-#ifndef _PDCLIB_SIZE_T_DEFINED
-#define _PDCLIB_SIZE_T_DEFINED _PDCLIB_SIZE_T_DEFINED
-typedef _PDCLIB_size_t size_t;
-#endif
+#define __need_size_t
+#include <bits/types.h>
 
 #ifndef __cplusplus
 #ifndef _PDCLIB_WCHAR_T_DEFINED

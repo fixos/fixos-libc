@@ -13,12 +13,12 @@
 #include <pdclib/io.h>
 
 int _PDCLIB_vscanf_unlocked( const char * _PDCLIB_restrict format, 
-                             _PDCLIB_va_list arg )
+                             va_list arg )
 {
     return _PDCLIB_vfscanf_unlocked( stdin, format, arg );
 }
 
-int vscanf( const char * _PDCLIB_restrict format, _PDCLIB_va_list arg )
+int vscanf( const char * _PDCLIB_restrict format, va_list arg )
 {
     return vfscanf( stdin, format, arg );
 }

@@ -11,10 +11,8 @@
 #include <pdclib/int.h>
 _PDCLIB_BEGIN_EXTERN_C
 
-#ifndef _PDCLIB_SIZE_T_DEFINED
-#define _PDCLIB_SIZE_T_DEFINED _PDCLIB_SIZE_T_DEFINED
-typedef _PDCLIB_size_t size_t;
-#endif
+#define __need_size_t
+#include <bits/types.h>
 
 #ifndef _PDCLIB_NULL_DEFINED
 #define _PDCLIB_NULL_DEFINED _PDCLIB_NULL_DEFINED

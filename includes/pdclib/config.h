@@ -33,6 +33,7 @@
 /* are using additional errno values, you *HAVE* to provide appropriate error */
 /* messages for *ALL* locales.)                                               */
 /* Default is 4 (0, ERANGE, EDOM, EILSEQ).                                    */
+/* FIXME not true on FiXos!                                                   */
 #define _PDCLIB_ERRNO_MAX 4
 
 /* -------------------------------------------------------------------------- */
@@ -170,34 +171,10 @@ struct _PDCLIB_imaxdiv_t
     _PDCLIB_intmax rem;
 };
 
-/* <time.h>: time_t 
- * The C standard doesn't define what representation of time is stored in 
- * time_t when returned by time() , but POSIX defines it to be seconds since the
- * UNIX epoch and most appplications expect that. 
- *
- * time_t is also used as the tv_sec member of struct timespec, which *is* 
- * defined as a linear count of seconds.
- *
- * time_t is defined as a "real type", so may be a floating point type, but with
- * the presence of the nanosecond accurate struct timespec, and with the lack of
- * any functions for manipulating more accurate values of time_t, this is 
- * probably not useful.
- */
-#define _PDCLIB_time  unsigned long
 
 /* <time.h>: clock_t
- *
- * A count of "clock ticks", where the length of a clock tick is unspecified by
- * the standard. The implementation is required to provide a macro, 
- * CLOCKS_PER_SEC, which is the number of "clock ticks" which corresponds to one
- * second.
- *
- * clock_t may be any real type (i.e. integral or floating), and its type on
- * various systems differs. 
- *
- * On XSI systems, CLOCKS_PER_SEC must be defined to 1000000
+ * FIXME ? On XSI systems, CLOCKS_PER_SEC must be defined to 1000000
  */
-#define _PDCLIB_clock long
 #define _PDCLIB_CLOCKS_PER_SEC 256 //FiXos clock on sh3
 
 /* <time.h>: TIME_UTC
@@ -271,32 +248,6 @@ struct _PDCLIB_imaxdiv_t
    most compilers.
 */
 #define _PDCLIB_offsetof( type, member ) ( (size_t) &( ( (type *) 0 )->member ) )
-
-/* Variable Length Parameter List Handling (<stdarg.h>)
-   The macros defined by <stdarg.h> are highly dependent on the calling
-   conventions used, and you probably have to replace them with builtins of
-   your compiler. The following generic implementation works only for pure
-   stack-based architectures, and only if arguments are aligned to pointer
-   type. Credits to Michael Moody, who contributed this to the Public Domain.
-*/
-
-/* Internal helper macro. va_round is not part of <stdarg.h>. */
-/*
-#define _PDCLIB_va_round( type ) ( (sizeof(type) + sizeof(void *) - 1) & ~(sizeof(void *) - 1) )
-
-typedef char * _PDCLIB_va_list;
-#define _PDCLIB_va_arg( ap, type ) ( (ap) += (_PDCLIB_va_round(type)), ( *(type*) ( (ap) - (_PDCLIB_va_round(type)) ) ) )
-#define _PDCLIB_va_copy( dest, src ) ( (dest) = (src), (void)0 )
-#define _PDCLIB_va_end( ap ) ( (ap) = (void *)0, (void)0 )
-#define _PDCLIB_va_start( ap, parmN ) ( (ap) = (char *) &parmN + ( _PDCLIB_va_round(parmN) ), (void)0 )
-*/
-
-/* Only for GCC : use builtin stdarg.h types and func */
-typedef __builtin_va_list _PDCLIB_va_list;
-#define _PDCLIB_va_arg( ap, type ) __builtin_va_arg(ap, type)
-#define _PDCLIB_va_copy( dest, src ) __builtin_va_copy(dest, src)
-#define _PDCLIB_va_end( ap ) __builtin_va_end(ap)
-#define _PDCLIB_va_start( ap, parmN ) __builtin_va_start(ap, parmN)
 
 
 /* -------------------------------------------------------------------------- */
