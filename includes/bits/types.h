@@ -14,7 +14,10 @@
 #include <fixos/types.h>
 
 #if !defined(__need_time_t) && !defined(__need_clock_t) && !defined(__need_size_t) \
-	&& !defined(__need_mode_t) && !defined(__need_off_t) && !defined(__need_pid_t)
+	&& !defined(__need_mode_t) && !defined(__need_off_t) && !defined(__need_pid_t) \
+	&& !defined(__need_ssize_t) && !defined(__need_uid_t) \
+	&& !defined(__need_gid_t)
+
 // no valid __need_xxx macro, include all the content including all types
 // protected by __need_xxx
 #define _LIBC_BITS_TYPES_H
@@ -25,10 +28,12 @@
 #define __need_mode_t
 #define __need_off_t
 #define __need_pid_t
+#define __need_ssize_t
+#define __need_gid_t
+#define __need_uid_t
 
 
 // content here is protected by _LIBC_BITS_TYPES_H header guard :
-typedef __kernel_ssize_t	ssize_t;
 
 // FiXos specific definition, should be protected by an appropriate feature test
 /*typedef __kernel_uint32		uint32;
@@ -90,6 +95,24 @@ typedef __kernel_pid_t		pid_t;
 typedef __kernel_mode_t		mode_t;
 #endif //!defined(_LIBC_MODE_T_DEFINED) && defined(__need_mode_t)
 
+
+#if !defined(_LIBC_SSIZE_T_DEFINED) && defined(__need_ssize_t)
+#define _LIBC_SSIZE_T_DEFINED
+typedef __kernel_ssize_t	ssize_t;
+#endif //!defined(_LIBC_SSIZE_T_DEFINED) && defined(__need_ssize_t)
+
+
+// uid_t and gid_t are not provided by FiXos for now, use simple integers
+#if !defined(_LIBC_UID_T_DEFINED) && defined(__need_uid_t)
+#define _LIBC_UID_T_DEFINED
+typedef int uid_t;
+#endif //!defined(_LIBC_UID_T_DEFINED) && defined(__need_uid_t)
+
+
+#if !defined(_LIBC_GID_T_DEFINED) && defined(__need_gid_t)
+#define _LIBC_GID_T_DEFINED
+typedef int gid_t;
+#endif //!defined(_LIBC_GID_T_DEFINED) && defined(__need_gid_t)
 
 
 #endif //_LIBC_BITS_TYPES_H
