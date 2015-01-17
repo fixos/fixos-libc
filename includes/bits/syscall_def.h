@@ -24,7 +24,7 @@
  */
 
 #define _SYSCALL_INLINEDEF_0(name, sysno, rettype) \
-	static inline rettype _IN_##name () { \
+	static inline rettype _IN_##name (void) { \
 		register int retval __asm__("r0"); \
 		__asm__ volatile ("trapa %1;" : "=r"(retval) : "n"(sysno)); \
 		_SYSCALL_CHECK_ERROR(retval); \

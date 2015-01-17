@@ -1,5 +1,5 @@
-#ifndef _LIBC_FCNTL_H
-#define _LIBC_FCNTL_H
+#ifndef _LIBC_UNISTD_H
+#define _LIBC_UNISTD_H
 
 
 #include <pdclib/aux.h>
@@ -36,4 +36,4 @@ ssize_t write(int fildes, const void *buf, size_t nbyte);
 
 _PDCLIB_END_EXTERN_C
 
-#endif //_LIBC_FCNTL_H
+#endif //_LIBC_UNISTD_H

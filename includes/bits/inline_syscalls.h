@@ -21,6 +21,7 @@ struct timezone;
 struct tms;
 struct sigaction;
 struct stat;
+struct fixos_dirent;
 
 // will maybe not work
 typedef struct sigset_s sigset_t;
@@ -34,7 +35,9 @@ _SYSCALL_INLINEDEF_3(write, SYSCALL_WRITE, __kernel_ssize_t, int, const char *, 
 
 _SYSCALL_INLINEDEF_0(fork, SYSCALL_FORK, __kernel_pid_t)
 
-noreturn _SYSCALL_INLINEDEF_1(exit, SYSCALL_EXIT, void, int)
+// little trick to avoid GCC warning : we say it's returning an int (instead
+// of noreturn)
+_SYSCALL_INLINEDEF_1(exit, SYSCALL_EXIT, int, int)
 
 _SYSCALL_INLINEDEF_0(getpid, SYSCALL_GETPID, __kernel_pid_t)
 
