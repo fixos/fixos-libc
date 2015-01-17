@@ -31,11 +31,15 @@ file(GLOB_RECURSE ALL_LIB_SOURCES "functions/*.c")
 
 # not used flags, which was used in the Jamrules file  "-ffunction-sections -fdata-sections"
 set(C_WARNING "-Wall -Wextra -Wno-unused-parameter -Wshadow -Wpointer-arith -Wwrite-strings -Wmissing-declarations -Wno-long-long -Wuninitialized -pedantic -Wnested-externs -Wstrict-prototypes -Wmissing-prototypes")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_WARNING} -std=c11 -Os -ffreestanding -nostdinc")
-message("CFLAGS: ${CMAKE_C_FLAGS}")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_WARNING} ")
 
-include_directories(BEFORE ${ALL_INCLUDE_DIRS})
-include_directories(BEFORE SYSTEM ${ALL_INCLUDE_DIRS})
+# only for libc (not for examples)
+set(LIBC_C_FLAGS "-std=c11 -Os -ffreestanding -nostdinc")
+
+message("LIBC CFLAGS: ${CMAKE_C_FLAGS} ${LIBC_C_FLAGS}")
+
+#include_directories(BEFORE ${ALL_INCLUDE_DIRS})
+#include_directories(BEFORE SYSTEM ${ALL_INCLUDE_DIRS})
 
 
 
@@ -44,7 +48,8 @@ include_directories(BEFORE SYSTEM ${ALL_INCLUDE_DIRS})
 #
 
 add_library(libc STATIC ${ALL_LIB_SOURCES}) 
-#set_target_properties(libc PROPERTIES PUBLIC_HEADER ${PUBLIC_INCLUDE_DIR})
+set_target_properties(libc PROPERTIES COMPILE_FLAGS ${LIBC_C_FLAGS})
+target_include_directories(libc SYSTEM BEFORE PUBLIC ${ALL_INCLUDE_DIRS})
 
 
 if(${HTML_DOC})
@@ -84,6 +89,12 @@ if(${HTML_DOC})
 endif(${HTML_DOC})
 
 
+
+#
+# Example directory
+#
+
+add_subdirectory(examples)
 
 
 #
