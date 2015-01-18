@@ -215,7 +215,8 @@ static inline size_t _PDCLIB_getchars( char * out, size_t n,
                 return i;
         }
 
-        if ( stream->bufidx == stream->bufend )
+	// fill buffer only if other characters are needed
+        if ( i != n && stream->bufidx == stream->bufend )
         {
             if( _PDCLIB_fillbuffer( stream ) == -1 )
             {
