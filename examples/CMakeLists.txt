@@ -9,7 +9,7 @@ file(GLOB EXAMPLES_CONTENT "./*")
 message("Examples content : ${EXAMPLES_CONTENT}")
 
 set(GENERIC_C_FLAGS  "-std=c11 -Os -nostdinc") 
-set(GENERIC_LD_FLAGS "-T${CMAKE_SOURCE_DIR}/fixos/userland.ld -nostdlib")
+set(GENERIC_LD_FLAGS "-T${CMAKE_SOURCE_DIR}/fixos/userland.ld -nostdlib -lgcc")
 
 foreach(SUBDIR ${EXAMPLES_CONTENT})
 	if(IS_DIRECTORY ${SUBDIR})
