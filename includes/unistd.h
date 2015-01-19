@@ -28,9 +28,17 @@ int chdir(const char *path);
 
 int close(int fd);
 
+pid_t getpgid(pid_t pid);
+
+pid_t getpid(void);
+
+pid_t getppid(void);
+
 off_t lseek(int fildes, off_t offset, int whence);
 
 ssize_t read(int fildes, void *buf, size_t nbyte);
+
+int setpgid(pid_t pid, pid_t pgid);
 
 pid_t tcgetpgrp(int fd);
 
