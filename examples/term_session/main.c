@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <sys/wait.h>
 
 
 /**
@@ -111,7 +112,33 @@ int main(int argc, char **argv) {
 					exit(execvp(all_args[0], all_args));
 				}
 				else {
-					// father, should wait...
+					// father, should wait child
+					pid_t wret;
+					int status;
+					wret = wait(&status);
+					if(wret == pid) {
+						// display a message depending the reason of wait return
+						if(WIFEXITED(status) && ) {
+							// if exited with 0, print nothing
+							if(WEXITSTATUS(status) != 0)
+								printf("> process end with status %d\n", WEXITSTATUS(status));
+						}
+						else if(WIFSIGNALED(status)) {
+							printf("> process killed by signal %d\n", WTERMSIG(status));
+						}
+						else if(WIFSTOPPED(status)) {
+							printf("> process %d stopped\n", wret);
+						}
+						else if(WIFCONTINUED(status)) {
+							printf("> process %d continued\n", wret);
+						}
+						else {
+							printf("> abnormal status : 0x%08X\n", status);
+						}
+					}
+					else {
+						printf("wait() for pid %d return %d!\n", pid, wret);
+					}
 				}	
 			}
 		}
