@@ -45,7 +45,7 @@ _SYSCALL_INLINEDEF_0(getppid, SYSCALL_GETPPID, __kernel_pid_t)
 
 _SYSCALL_INLINEDEF_1(wait, SYSCALL_WAIT, __kernel_pid_t, int*)
 
-_SYSCALL_INLINEDEF_3(execve, SYSCALL_EXECVE, int, const char*, char**, char *const *)
+_SYSCALL_INLINEDEF_3(execve, SYSCALL_EXECVE, int, const char*, char * const*, char *const *)
 
 // FiXos-specific gettimeofday : use a struct timespec instead of struct timeval
 _SYSCALL_INLINEDEF_2(gettimeofday, SYSCALL_GETTIMEOFDAY, int, struct timespec *,
