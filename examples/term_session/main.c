@@ -118,7 +118,7 @@ int main(int argc, char **argv) {
 					wret = wait(&status);
 					if(wret == pid) {
 						// display a message depending the reason of wait return
-						if(WIFEXITED(status) && ) {
+						if(WIFEXITED(status)) {
 							// if exited with 0, print nothing
 							if(WEXITSTATUS(status) != 0)
 								printf("> process end with status %d\n", WEXITSTATUS(status));
