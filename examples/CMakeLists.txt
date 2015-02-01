@@ -21,8 +21,8 @@ foreach(SUBDIR ${EXAMPLES_CONTENT})
 		message("New example target : ${SUBNAME}, sources : ${SUBDIR_SRC}")
 		
 		set_target_properties(${SUBNAME} PROPERTIES COMPILE_FLAGS ${GENERIC_C_FLAGS})
-		target_include_directories(${SUBNAME} SYSTEM BEFORE INTERFACE ${ALL_INCLUDE_DIRS})
-		target_link_libraries(${SUBNAME} libc ${GENERIC_LD_FLAGS})
+		target_include_directories(${SUBNAME} BEFORE INTERFACE ${ALL_INCLUDE_DIRS})
+		target_link_libraries(${SUBNAME} c ${GENERIC_LD_FLAGS})
 
 		
 		# strip almost everything

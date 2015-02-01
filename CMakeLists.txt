@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 2.8.10 FATAL_ERROR)
 project(fixos-libc C)
 
 
@@ -47,9 +47,9 @@ message("LIBC CFLAGS: ${CMAKE_C_FLAGS} ${LIBC_C_FLAGS}")
 # Build targets definitions
 #
 
-add_library(libc STATIC ${ALL_LIB_SOURCES}) 
-set_target_properties(libc PROPERTIES COMPILE_FLAGS ${LIBC_C_FLAGS})
-target_include_directories(libc SYSTEM BEFORE PUBLIC ${ALL_INCLUDE_DIRS})
+add_library(c STATIC ${ALL_LIB_SOURCES}) 
+set_target_properties(c PROPERTIES COMPILE_FLAGS ${LIBC_C_FLAGS})
+target_include_directories(c BEFORE PUBLIC ${ALL_INCLUDE_DIRS})
 
 
 if(${HTML_DOC})
@@ -101,7 +101,7 @@ add_subdirectory(examples)
 # Install directives : library and public headers
 # 
 
-install(TARGETS libc
+install(TARGETS c
 		RUNTIME DESTINATION bin
 		PUBLIC_HEADER DESTINATION include
 		ARCHIVE DESTINATION lib)
