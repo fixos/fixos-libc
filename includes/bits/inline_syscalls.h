@@ -76,8 +76,8 @@ _SYSCALL_INLINEDEF_1(sbrk, SYSCALL_SBRK, void *, int)
 _SYSCALL_INLINEDEF_4(sysctl_read, SYSCALL_SYSCTL_READ, int, const int*,
 		__kernel_size_t, void*, __kernel_size_t*)
 
-_SYSCALL_INLINEDEF_4(sysctl_write, SYSCALL_SYSCTL_READ, int, const int*,
-		__kernel_size_t, const void*, __kernel_size_t*)
+_SYSCALL_INLINEDEF_4(sysctl_write, SYSCALL_SYSCTL_WRITE, int, const int*,
+		__kernel_size_t, const void*, __kernel_size_t)
 
 _SYSCALL_INLINEDEF_2(nanosleep, SYSCALL_NANOSLEEP, int,
 		const struct timespec *, struct timespec *)

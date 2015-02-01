@@ -71,6 +71,7 @@
 		register int arg2 __asm__("r5") = (int)_arg2; \
 		register int arg3 __asm__("r6") = (int)_arg3; \
 		register int arg4 __asm__("r7") = (int)_arg4; \
+		__asm__ volatile ("" : : "r"(arg4)); /* GCC bug workaround... */ \
 		__asm__ volatile ("trapa %1;" : "=r"(retval) : "n"(sysno), "r"(arg1), "r"(arg2), "r"(arg3), "r"(arg4)); \
 		_SYSCALL_CHECK_ERROR(retval); \
 		return (rettype)(retval); \
