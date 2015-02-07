@@ -346,7 +346,7 @@ typedef struct _PDCLIB_fileops  _PDCLIB_fileops_t;
 typedef union  _PDCLIB_fd       _PDCLIB_fd_t;
 typedef struct _PDCLIB_file     _PDCLIB_file_t; // Rename to _PDCLIB_FILE?
 
-/* Status structure required by _PDCLIB_print(). */
+/* Status structure required by _PDCLIB_print() and _PDCLIB_scan(). */
 struct _PDCLIB_status_t
 {
     int              base;   /* base to which the value shall be converted   */

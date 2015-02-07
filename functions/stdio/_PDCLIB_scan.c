@@ -292,18 +292,19 @@ const char * _PDCLIB_scan( const char * spec, struct _PDCLIB_status_t * status )
             {
                 if ( isspace( rc ) )
                 {
-                    UNGET( rc, status );
                     if ( value_parsed )
                     {
                         /* matching sequence terminated by whitespace */
+						UNGET( rc, status );
+
                         *c = '\0';
                         ++status->n;
                         return ++spec;
                     }
                     else
                     {
-                        /* matching error */
-                        return NULL;
+						/* leading spaces are not counted for string width */
+						status->current--;
                     }
                 }
                 else
