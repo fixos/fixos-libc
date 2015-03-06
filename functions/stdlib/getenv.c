@@ -16,6 +16,19 @@
 
 char * getenv( const char * name )
 {
+	size_t name_length = strlen(name);
+	if( environ == NULL || name_length == NULL )
+		return NULL;
+    int i = 0;
+    while ( environ[i] != NULL )
+    {
+    	if( memcmp(name, environ[i], name_length) == 0 ) {
+            char *ptr = environ[i];
+            while(*ptr != '=') ptr++;
+    		return ptr + 1; // let out the prefix and the = character.
+        }
+    	++i;
+    }
     return NULL;
 }
 
