@@ -52,6 +52,8 @@ ssize_t read(int fildes, void *buf, size_t nbyte);
 
 int setpgid(pid_t pid, pid_t pgid);
 
+unsigned int sleep(unsigned int seconds);
+
 pid_t tcgetpgrp(int fd);
 
 int tcsetpgrp(int fd, pid_t pgrp);
