@@ -36,7 +36,6 @@
 #define EAFNOSUPPORT 1027
 #define EEXIST 1028
 #define EMLINK 1029
-#define ENOMEM 1030
 #define ETIMEDOUT 1032
 #define EMSGSIZE 1035
 #define ENOMSG 1036
