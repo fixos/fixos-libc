@@ -37,6 +37,8 @@ struct tm {
 time_t time( time_t* t ) _PDCLIB_nothrow;
 int timespec_get( struct timespec *ts, int base ) _PDCLIB_nothrow;
 
+int nanosleep(const struct timespec *expect, struct timespec *rest);
+
 // FIXME other time.h definitions!
 
 _PDCLIB_END_EXTERN_C
