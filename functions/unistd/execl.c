@@ -28,9 +28,8 @@ int execl(const char *path, const char *arg0, ...) {
 	while(NULL != (array[nb++] = va_arg(va, char*)) );
 	va_end(va);
 	
-	// FIXME environ variable
 	int ret;
-	ret = execve(path, array, NULL);
+	ret = execve(path, array, environ);
 
 	// error: execve should not return
 	free(array);

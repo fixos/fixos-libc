@@ -148,7 +148,7 @@ _PDCLIB_noreturn void abort( void ) _PDCLIB_nothrow;
    reverse order of registration (last-in, first-out).
    Returns zero if registration is successfull, nonzero if it failed.
 */
-int atexit( void (*func)( void ) ) _PDCLIB_nothrow; 
+int atexit( void (*func)( void ) ) _PDCLIB_nothrow;
 
 /* Normal process termination. Functions registered by atexit() (see above) are
    called, streams flushed, files closed and temporary files removed before the
@@ -166,6 +166,11 @@ _PDCLIB_noreturn void exit( int status ) _PDCLIB_nothrow;
 */
 _PDCLIB_noreturn void _Exit( int status ) _PDCLIB_nothrow;
 
+/**
+ * Environment pointer.
+ */
+extern char ** environ;
+
 /* Search an environment-provided key-value map for the given key name, and
    return a pointer to the associated value string (or NULL if key name cannot
    be found). The value string pointed to might be overwritten by a subsequent
@@ -174,6 +179,8 @@ _PDCLIB_noreturn void _Exit( int status ) _PDCLIB_nothrow;
    the hosting OS and its glue function.
 */
 char * getenv( const char * name ) _PDCLIB_nothrow;
+
+int setenv(const char *name, const char *value, int overwrite);
 
 /* If string is a NULL pointer, system() returns nonzero if a command processor
    is available, and zero otherwise. If string is not a NULL pointer, it is
