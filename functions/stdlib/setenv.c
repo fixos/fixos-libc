@@ -28,15 +28,16 @@ int setenv(const char *name, const char *value, int overwrite) {
 
 		// Creating the new environ (+2 because previous and new NULL)
 		char **new_environ;
-		if(environ_alloc)
+		if(environ_alloc) {
 			new_environ = realloc(environ, (i + 2) * sizeof(char *));
 			if(new_environ != NULL)
 				free(environ);
+		}
 		else {
 			// first allocation, use malloc (environ is set to stack) and copy
 			new_environ = malloc((i+2) * sizeof(char *));
 			if(new_environ != NULL) {
-				memcpy(new_environ, environ, (i + 1) * (sizeof char*));
+				memcpy(new_environ, environ, (i + 1) * sizeof(char*));
 				environ_alloc = 1;
 			}
 		}
