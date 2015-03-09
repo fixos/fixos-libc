@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <limits.h>
+#include <errno.h>
 
 #ifndef REGTEST
 #include <pdclib/io.h>
@@ -375,12 +376,32 @@ struct _PDCLIB_locale _PDCLIB_global_locale = {
         /* int_n_sign_posn    */ CHAR_MAX,
     },
     ._CType = &global_ctype[1],
+	// we are using subscript array initialization (C99 feature)
     ._ErrnoStr = {
-        /* no error */ (char *)"",
-        /* ERANGE   */ (char *)"ERANGE (Range error)",
-        /* EDOM     */ (char *)"EDOM (Domain error)",
-        /* EILSEQ   */ (char *)"EILSEQ (Illegal sequence)"
-    },
+        [0] = "",
+		[1] = "Unspecified error",
+    //    [ERANGE] = "ERANGE (Range error)",
+    //    [EDOM] = "EDOM (Domain error)",
+    //    [EILSEQ] = "EILSEQ (Illegal sequence)",
+		[EAGAIN] = "EAGAIN (Ressource temporarily unavailable)",
+		[EBADF] = "EBADF (Bad file descriptor)",
+		[EFAULT] = "EFAULT (Bad address)",
+		[EINTR] = "EINTR (Interupted system call)",
+		[EINVAL] = "EINVAL (Invalid argument)",
+		[EIO] = "EIO (Input/output error)",
+		[EISDIR] = "EISDIR (Is a directory)",
+		[ENFILE] = "ENFILE (Too many open file in the system)",
+		[EMFILE] = "EMFILE (Too many open file in this process)",
+		[ENOTDIR] = "ENOTDIR (Not a directory)",
+		[ENXIO] = "ENXIO (Device not configured)",
+		[ENAMETOOLONG] = "ENAMETOOLONG (File name too long -as this message too)",
+		[EROFS] = "EROFS (Read-only file system)",
+		[ENOENT] = "ENOENT (No such file or directory)",
+		[ESRCH] = "ESRCH (No such process)",
+		[EACCES] = "EACESS (Permission denied)",
+		[EPERM] = "EPERM (Operation not permitted)",
+		[ENOMEM] = "ENOMEM (Cannot allocate memory)",
+    }
 };
 
 #endif

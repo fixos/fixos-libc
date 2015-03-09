@@ -34,7 +34,7 @@
 /* messages for *ALL* locales.)                                               */
 /* Default is 4 (0, ERANGE, EDOM, EILSEQ).                                    */
 /* FIXME not true on FiXos!                                                   */
-#define _PDCLIB_ERRNO_MAX 4
+#define _PDCLIB_ERRNO_MAX 20
 
 /* -------------------------------------------------------------------------- */
 /* Integers                                                                   */
