@@ -6,39 +6,45 @@ int setenv(const char *name, const char *value, int overwrite) {
 	int name_length = strlen(name);
 	int value_length = strlen(value);
 	int i;
+	
+	// used to indicate if environ is allocated by malloc
+	static int environ_alloc = 0;
 
 	if( environ == NULL || name_length == 0 || strrchr(name, '=') != NULL) {
 		errno = EINVAL;
 		return -1;
 	}
 
-	i = 0;
-	while( environ[i] != NULL )
-	{
-		if( memcmp(name, environ[i], name_length) == 0 ) {
+	for(i=0; environ[i] != NULL; i++) {
+		if( memcmp(name, environ[i], name_length) == 0 
+				&& environ[i][name_length] == '=')
+		{
 			break;
 		}
-		++i;
 	}
 	// If we didn't found the string, create it.
 	if( environ[i] == NULL )
 	{
 
-		// Creating the new environ
-		// +2 because previous NULL and new NULL
-		char **new_environ = (char **) malloc((i + 2) * sizeof(char *));
-		if(new_environ == NULL) {
-			errno = ENOMEM;
-			return -1;
+		// Creating the new environ (+2 because previous and new NULL)
+		char **new_environ;
+		if(environ_alloc)
+			new_environ = realloc(environ, (i + 2) * sizeof(char *));
+			if(new_environ != NULL)
+				free(environ);
+		else {
+			// first allocation, use malloc (environ is set to stack) and copy
+			new_environ = malloc((i+2) * sizeof(char *));
+			if(new_environ != NULL) {
+				memcpy(new_environ, environ, (i + 1) * (sizeof char*));
+				environ_alloc = 1;
+			}
 		}
 
-		// Replacing the environ for new one.
-		for( int j = 0 ; j <= i; j++ )
-		{
-			new_environ[j] = environ[j];
-		}
+		if(new_environ == NULL)
+			return -1;
+
 		new_environ[i + 1] = NULL;
-		free(environ);
 		environ = new_environ;
 	}
 	// We found the variable
@@ -46,18 +52,16 @@ int setenv(const char *name, const char *value, int overwrite) {
 		// We can't change it
 		return 0;
 
-	// Allocating the new variable
-	char *new_var = (char *) malloc((name_length + value_length + 2) * sizeof(char));
+	// Allocating the new variable (we can't free the old...)
+	// TODO optimize to avoid re-allocating if old string was larger
+	char *new_var = malloc((name_length + value_length + 2) * sizeof(char));
 	if( new_var == NULL )
-	{
-		errno = ENOMEM;
 		return -1;
-	}
+
 	// Setting the new variable
 	memcpy(new_var, name, name_length);
 	new_var[name_length] = '=';
-	memcpy(&new_var[name_length + 1], value, value_length);
-	new_var[name_length + value_length + 1] = '\0';
+	memcpy(&new_var[name_length + 1], value, value_length + 1);
 	environ[i] = new_var;
 
 	return 0;
