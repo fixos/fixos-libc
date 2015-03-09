@@ -24,7 +24,8 @@ struct stat;
 struct fixos_dirent;
 
 // will maybe not work
-typedef struct sigset_s sigset_t;
+//typedef struct sigset_s sigset_t;
+#include <fixos/sigset.h>
 
 
 _SYSCALL_INLINEDEF_2(open, SYSCALL_OPEN, int, const char *, int)

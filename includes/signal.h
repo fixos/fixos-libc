@@ -9,6 +9,10 @@
 #ifndef _PDCLIB_SIGNAL_H
 #define _PDCLIB_SIGNAL_H _PDCLIB_SIGNAL_H
 #include <pdclib/config.h>
+#include <bits/signal.h>
+
+#define __need_pid_t
+#include <bits/types.h>
 
 /* Signals ------------------------------------------------------------------ */
 
@@ -29,29 +33,6 @@
    3) make provisions that further signals of the same type are blocked until
       the signal handler returns (optional for SIGILL)
 */
-
-/* These are the values used by Linux. */
-
-/* Abnormal termination / abort() */
-#define SIGABRT 6
-/* Arithmetic exception / division by zero / overflow */
-#define SIGFPE  8
-/* Illegal instruction */
-#define SIGILL  4
-/* Interactive attention signal */
-#define SIGINT  2
-/* Invalid memory access */
-#define SIGSEGV 11
-/* Termination request */
-#define SIGTERM 15
-
-/* The following should be defined to pointer values that could NEVER point to
-   a valid signal handler function. (They are used as special arguments to
-   signal().) Again, these are the values used by Linux.
-*/
-#define SIG_DFL (void (*)( int ))0
-#define SIG_ERR (void (*)( int ))-1
-#define SIG_IGN (void (*)( int ))1
 
 typedef _PDCLIB_sig_atomic sig_atomic_t;
 
@@ -81,6 +62,11 @@ void (*signal( int sig, void (*func)( int ) ) )( int );
    or SIG_IGN will end the program).
    Returns zero if successful, nonzero otherwise. */
 int raise( int sig );
+
+int kill(pid_t pid, int sig);
+
+int sigaction(int sig, const struct sigaction *restrict act, 
+		struct sigaction *restrict oact);
 
 #endif
 

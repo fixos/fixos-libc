@@ -13,7 +13,8 @@
 
 void abort( void )
 {
-    raise( SIGABRT );
+    //raise( SIGABRT );
+	raise(SIGKILL); // FIXME should be SIGABRT
     exit( EXIT_FAILURE );
 }
 
