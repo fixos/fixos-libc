@@ -15,22 +15,27 @@ int setenv(const char *name, const char *value, int overwrite) {
 	i = 0;
 	while( environ[i] != NULL )
 	{
-		if( memcmp(name, environ[i], name_length) == 0 ) {
+		if( memcmp(name, environ[i], name_length) == 0
+				&& environ[i][name_length] == '=')
+		{
 			break;
 		}
-		++i;
+		i++;
 	}
 	// If we didn't found the string, create it.
 	if( environ[i] == NULL )
 	{
 
-		// Creating the new environ
-		// +2 because previous NULL and new NULL
-		char **new_environ = (char **) malloc((i + 2) * sizeof(char *));
-		if(new_environ == NULL) {
-			errno = ENOMEM;
+		// Creating the new environ (+2 because previous and new NULL)
+		char **new_environ;
+			new_environ = malloc((i + 2) * sizeof(char *));
+			if(new_environ != NULL) {
+				memcpy(new_environ, environ, (i + 1) * sizeof(char*));
+				// free(environ);
+			}
+
+		if(new_environ == NULL)
 			return -1;
-		}
 
 		// Replacing the environ for new one.
 		for( int j = 0 ; j <= i; j++ )

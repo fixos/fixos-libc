@@ -14,20 +14,20 @@
 
 #ifndef REGTEST
 
-char * getenv( const char * name )
+char* getenv(const char* name)
 {
-	size_t name_length = strlen(name);
-	if( environ == NULL || name_length == NULL )
-		return NULL;
+    size_t name_length = strlen(name);
+    if (environ == NULL || name_length == 0)
+        return NULL;
     int i = 0;
-    while ( environ[i] != NULL )
-    {
-    	if( memcmp(name, environ[i], name_length) == 0 ) {
-            char *ptr = environ[i];
-            while(*ptr != '=') ptr++;
-    		return ptr + 1; // let out the prefix and the = character.
+    while (environ[i] != NULL) {
+        if (memcmp(name, environ[i], name_length) == 0) {
+            char* ptr = environ[i] + name_length;
+            // name should be directly followed by an '=' char
+            if (*ptr == '=')
+                return ptr + 1; // let out the prefix and the = character.
         }
-    	++i;
+				++i;
     }
     return NULL;
 }
@@ -37,7 +37,7 @@ char * getenv( const char * name )
 #ifdef TEST
 #include <pdclib/test.h>
 
-int main( void )
+int main(void)
 {
     return TEST_RESULTS;
 }
