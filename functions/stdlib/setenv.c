@@ -6,9 +6,7 @@ int setenv(const char *name, const char *value, int overwrite) {
 	int name_length = strlen(name);
 	int value_length = strlen(value);
 	int i;
-	
-	// used to indicate if environ is allocated by malloc
-	static int environ_alloc = 0;
+
 
 	if( environ == NULL || name_length == 0 || strrchr(name, '=') != NULL) {
 		errno = EINVAL;
@@ -16,7 +14,7 @@ int setenv(const char *name, const char *value, int overwrite) {
 	}
 
 	for(i=0; environ[i] != NULL; i++) {
-		if( memcmp(name, environ[i], name_length) == 0 
+		if( memcmp(name, environ[i], name_length) == 0
 				&& environ[i][name_length] == '=')
 		{
 			break;
@@ -28,18 +26,10 @@ int setenv(const char *name, const char *value, int overwrite) {
 
 		// Creating the new environ (+2 because previous and new NULL)
 		char **new_environ;
-		if(environ_alloc) {
-			new_environ = realloc(environ, (i + 2) * sizeof(char *));
-			if(new_environ != NULL)
-				free(environ);
-		}
-		else {
-			// first allocation, use malloc (environ is set to stack) and copy
-			new_environ = malloc((i+2) * sizeof(char *));
-			if(new_environ != NULL) {
-				memcpy(new_environ, environ, (i + 1) * sizeof(char*));
-				environ_alloc = 1;
-			}
+		// first allocation, use malloc (environ is set to stack) and copy
+		new_environ = malloc((i+2) * sizeof(char *));
+		if(new_environ != NULL) {
+			memcpy(new_environ, environ, (i + 1) * sizeof(char*));
 		}
 
 		if(new_environ == NULL)
